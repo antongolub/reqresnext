@@ -1,0 +1,17 @@
+{
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ],
+  "include": [
+    "src/**/*.js"
+  ],
+  "require": [
+    "flow-remove-types/register",
+    "@std/esm",
+    "./script/require-all"
+  ],
+  "check-coverage": false,
+  "cache": true
+}

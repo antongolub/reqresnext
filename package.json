@@ -1,0 +1,93 @@
+{
+  "name": "reqresnext",
+  "version": "1.0.0",
+  "description": "Tiny helper for express middleware testing",
+  "main": "dist/index.js",
+  "@std/esm": {
+    "esm": "all",
+    "cjs": true
+  },
+  "scripts": {
+    "flow": "flow",
+    "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
+    "build": "babel src --out-dir dist",
+    "lint": "standard src/**/*.js test/**/*.js",
+    "mocha": "nyc mocha --opts .mocha.opts",
+    "test": "npm run flow_coverage && npm run lint && npm run mocha",
+    "doc": "esdoc",
+    "coveralls": "npm test && nyc report --reporter=text-lcov | coveralls",
+    "minor": "npm test && npm run build && standard-version --release-as minor && npm run postversion",
+    "major": "npm test && npm run build && standard-version --release-as major && npm run postversion",
+    "release": "npm test && npm run build && standard-version && npm run postversion",
+    "postversion": "npm run push && npm publish",
+    "push": "git push --follow-tags origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:qiwi/di-container.git"
+  },
+  "keywords": [
+    "di",
+    "ioc",
+    "container",
+    "dependency injection",
+    "inversion of control"
+  ],
+  "author": "Anton Golub <a.golub@qiwi.com> (http://antongolub.com)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-flow": "^7.0.0-beta.40",
+    "@babel/register": "^7.0.0-beta.40",
+    "@std/esm": "^0.23.3",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-spies": "^1.0.0",
+    "chai-subset": "^1.6.0",
+    "coveralls": "^3.0.0",
+    "dirty-chai": "^2.0.1",
+    "esdoc": "^1.0.4",
+    "esdoc-coverage-plugin": "^1.1.0",
+    "esdoc-flow-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "flow-bin": "^0.66.0",
+    "flow-coverage-report": "^0.5.0",
+    "flow-remove-types": "^1.2.3",
+    "glob": "^7.1.2",
+    "install": "^0.10.4",
+    "mocha": "^5.0.1",
+    "npm": "^5.6.0",
+    "nyc": "^11.5.0",
+    "standard": "^11.0.0",
+    "standard-version": "^4.3.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "globals": [
+      "it",
+      "expect",
+      "describe",
+      "before",
+      "after",
+      "afterEach",
+      "beforeEach"
+    ],
+    "rules": {
+      "use-flow-type": 1
+    },
+    "ignore": [],
+    "settings": {
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
+      }
+    }
+  }
+}

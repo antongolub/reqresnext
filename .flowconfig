@@ -1,0 +1,8 @@
+[include]
+./src/
+
+[ignore]
+.*/node_modules/*.
+
+[libs]
+./definitions/
