@@ -5,4 +5,4 @@
 .*/node_modules/*.
 
 [libs]
-./definitions/
+./flow-typed/

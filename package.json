@@ -8,6 +8,7 @@
     "cjs": true
   },
   "scripts": {
+    "fetch_types": "flow-typed install express@4.x.x",
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
     "build": "babel src --out-dir dist",
@@ -35,7 +36,9 @@
   ],
   "author": "Anton Golub <a.golub@qiwi.com> (http://antongolub.com)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "lodash-es": "^4.17.5"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "^7.0.0-beta.40",
@@ -58,6 +61,7 @@
     "flow-bin": "^0.66.0",
     "flow-coverage-report": "^0.5.0",
     "flow-remove-types": "^1.2.3",
+    "flow-typed": "^2.3.0",
     "glob": "^7.1.2",
     "install": "^0.10.4",
     "mocha": "^5.0.1",
