@@ -14,7 +14,7 @@
     "build": "babel src --out-dir dist",
     "lint": "standard src/**/*.js test/**/*.js",
     "mocha": "nyc mocha --opts .mocha.opts",
-    "test": "npm run flow_coverage && npm run lint && npm run mocha",
+    "test": "npm run flow && npm run lint && npm run mocha",
     "doc": "esdoc",
     "coveralls": "npm test && nyc report --reporter=text-lcov | coveralls",
     "minor": "npm test && npm run build && standard-version --release-as minor && npm run postversion",

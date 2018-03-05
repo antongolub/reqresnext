@@ -6,6 +6,7 @@ before_install:
   - npm install -g mocha
 install:
   - npm install
-  - npm build
+  - npm run fetch_types
+  - npm run build
 script:
   - npm run coveralls
