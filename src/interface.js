@@ -1,31 +1,95 @@
 // @flow
 
+export type IAny = any
+export interface IApp {
+  get(input: any): any
+}
+export type INext = {
+  (...args: any): any
+}
+export type IData = any
+export interface IDescriptor {
+  [key: any]: any
+}
+
+export type ICookie = {
+  name: string;
+  value: string;
+  options: Object;
+}
+export type ICookiesMap = {
+  [key: string]: ICookie
+}
+export type ICookieSetter = {
+  (name: string, value: string, options: any): void
+}
+export type IHeaderName = string
+export type IHeaderValue = string
+export type IHeadersMap = {
+  [key: IHeaderName]: IHeaderValue
+}
+export type IHeaderSetter = {
+  (field: IHeadersMap | IHeaderName, value?: ?IHeaderValue): void
+}
+export type IStatusCode = number
+export type IStatusSetter = {
+  (value: IStatusCode): void
+}
+export type IConnection = {
+  encrypted: ?boolean
+}
+export type IQuery = {
+  [key: string]: any
+}
+export type IParamsMap = {
+  [key: string]: any
+}
 export interface IRequest {
-  __headers: IHandlersMap
+  [key: string]: any;
 }
 export interface IResponse {
-  __headers: IHandlersMap;
-  __handlers: IHandlersMap;
-  body: IData;
-  header(field: IHeaderName | IHeaderMap, value: ?IHeaderValue): IResponse;
+  [key: string]: any;
+  cookie: ICookieSetter
 }
-export type INext = Function
-
-export type IStatus = number
-export type IRequestOpts = {}
-export type IResponseOpts = {}
-
-export type IHandler = {
-  (): any;
+type UrlTypeBasic = {
+  protocol?: string;
+  host?: string;
+  hostname?: string;
+  query?: IQuery;
+  hash?: string;
+  port?: string;
+  pathname?: string;
+  search?: string;
+  slashes?: boolean;
+  auth?: any
 }
-export type IHandlerStack = Array<IHandler>
-export type IHandlersMap = Object
-
-export type IHeaderValue = string
-export type IHeaderName = string
-export interface IHeaderMap {
-  [key: IHeaderName]: IHeaderValue;
+export type IUrl = UrlTypeBasic & {
+  href: string;
 }
 
-export type IEvent = string
-export type IData = any
+export type IUrlOpt = UrlTypeBasic & {
+  href?: string
+}
+
+export type IRawOptions = IUrlOpt & {
+  app?: ?IApp;
+  res?: ?Object;
+  req?: ?Object;
+  body?: ?IData;
+  url?: string;
+  connection?: ?IConnection;
+  host?: ?string;
+  statusCode? :?number;
+  status? :?number;
+  params? :?IParamsMap;
+  headers? :?IHeadersMap;
+  cookies?: ?ICookiesMap;
+}
+
+export interface IRequestOpts {
+  constructor(input: IRawOptions): IRequestOpts;
+  raw: IRawOptions;
+}
+export interface IResponseOpts {
+  headers: IHeadersMap;
+}

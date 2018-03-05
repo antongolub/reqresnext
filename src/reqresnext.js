@@ -1,19 +1,16 @@
 // @flow
 
 import type {
-  IRequestOpts,
-  IResponseOpts,
+  IRawOptions
 } from './interface'
 
-import Res from './response'
-import Req from './request'
+import Response from './response'
+import Request from './request'
 
-export function gen(reqOpts: ?IRequestOpts, resOpts: ?IResponseOpts) {
+export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions) {
   return {
-    req: new Req(reqOpts),
-    res: new Res(resOpts),
-    next() {}
-  };
+    req: new Request(reqOpts),
+    res: new Response(resOpts),
+    next () {}
+  }
 }
-
-export default gen;

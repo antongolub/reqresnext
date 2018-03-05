@@ -39,6 +39,7 @@ doc
 node_modules/
 jspm_packages/
 typings/
+flow-typed
 
 .npm
 .eslintcache

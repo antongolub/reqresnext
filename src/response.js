@@ -1,82 +1,102 @@
 // @flow
 
 import type {
-  IStatus,
-  IResponse,
-  IResponseOpts,
-  IHandler,
-  IHandlersMap,
-  IEvent,
+  IAny,
+  IApp,
   IData,
-  IHeaderName,
-  IHeaderValue,
-  IHeaderMap
+  IStatusCode,
+  IHeadersMap,
+  IRequest,
+  IResponse,
+  IRawOptions,
+  IResponseOpts,
+  ICookie,
+  ICookiesMap,
+  ICookieSetter,
+  IHeaderSetter,
+  IStatusSetter,
+  IDescriptor
 } from './interface'
 
-import { assign, isObject } from './util'
+import express from 'express'
+import { ServerResponse } from 'http'
+import setprototypeof from 'setprototypeof'
+import { assign, each } from './util'
 
-export const FINISH = 'finish'
+// $FlowFixMe
+const { response } = express
 
-export default class Res implements IResponse {
-  body: IData
-  statusCode: IStatus
-  constructor (opts: ?IResponseOpts) {
-    this.body = ''
-    this.__handlers = {}
-    assign(this, opts)
-  }
+export const DEFAULT_STATUS_CODE = 200
+export const DEFAULT_HEADERS = {}
+export const DEFAULT_COOKIES = {}
+export const DEFAULT_REQ = {}
+export const DEFAULT_APP = {
+  get () {}
+}
 
-  get headers (): IHeaderMap {
-    return this.__headers
-  }
+export default class Response extends ServerResponse implements IResponse {
+  $key: string
+  $value: IAny
+  cookie: ICookieSetter
+  header: IHeaderSetter
+  headers: IHeadersMap
+  status: IStatusSetter
+  app: IApp
+  req: IRequest | Object
+  body: IDescriptor
 
-  write (data: IData) {
-    this.body += data
+  constructor (input: ?IRawOptions): IResponse {
+    super({})
+    setprototypeof(this, response)
+
+    const opts = new ResOptions(input || {})
+
+    let body: IData
+    // $FlowFixMe
+    this.end = (chunk: IData, encoding: ?string) => { body = chunk }
+    Object.defineProperty(this, 'body', ({
+      get () {
+        return body
+      },
+      set (value: IData) {
+        throw new Error('Use .send(), .write() or .json()')
+      }
+    }: Object))
+    this.req = opts.req
+    this.app = opts.app
+    this.status(opts.statusCode)
+    this.header(opts.headers)
+
+    each(opts.cookies, ({name, value, options}: ICookie): void => {
+      this.cookie(name, value, options)
+    })
+
+    // Passes additional props
+    each(opts.raw, (v: IAny, k: string) => {
+      if (!(k in this)) {
+        this[k] = v
+      }
+    })
+
     return this
   }
+}
 
-  send(value: IData) {
-    this.body = '' + (isObject(value) ? JSON.stringify(value) : value);
-    this.__trigger(FINISH);
-    return this;
-  }
-  end() {
-    this.__trigger(FINISH);
-    return this;
-  }
+export class ResOptions implements IResponseOpts {
+  raw: IRawOptions
+  statusCode: IStatusCode
+  headers: IHeadersMap
+  cookies: ICookiesMap
+  app: IApp | Object
+  req: IRequest | Object
 
-  header(field: IHeaderName | IHeaderMap, value: ?IHeaderValue): IResponse {
-    if (isObject(value)) {
-      assign(this.__headers, value);
-    }
-    return this;
-  }
-  json(value: IData) {
-    this.send(JSON.stringify(value));
-    return this;
-  }
-  status(status: IStatus) {
-    this.statusCode = status;
-    return this;
-  }
-  on(event: IEvent, handler: IHandler) {
-    this.__handlers[event] = this.__handlers[event] || [];
-    this.__handlers[event]
-      .push(handler);
+  constructor (input: IRawOptions) {
+    this.raw = input
 
-    return this;
-  }
-  pipe() {}
-  __headers: IHandlersMap
-  __handlers: IHandlersMap
-  __trigger(event: IEvent) {
-    const stack = this.__handlers[event]
-
-    if (stack) {
-      stack.forEach(handler => handler())
-    }
-    /*this.__handlers[event].forEach()
-    each(this.__handlers[event], handler => handler());
-    */
+    this.statusCode = ((input.statusCode || input.status || DEFAULT_STATUS_CODE) | 0)
+    this.headers = assign({}, DEFAULT_HEADERS, input.headers || {})
+    this.cookies = assign({}, DEFAULT_COOKIES, input.cookies || {})
+    this.app = input.app || DEFAULT_APP
+    this.req = input.req || DEFAULT_REQ
   }
 }

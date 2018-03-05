@@ -6,3 +6,5 @@
 
 [libs]
 ./flow-typed/
+
+[options]
