@@ -19,7 +19,7 @@ Reqresnext:
 ##### Usage
 ```javascript
     import reqresnext from 'reqresnext'
-    
+ 
     it('middleware does something', () => {
       const {req, res, next} = reqresnext({...}, {...})
       mware(req, res, next)
@@ -27,4 +27,14 @@ Reqresnext:
       expect(res.statusCode).to.equal('...')
       expect(res.body).to.equal('...')
     })
+```
+
+Also you may construct req/res instances directly:
+```javascript
+    import {Response} from 'reqresnext'
+
+    const foo = {name: 'foo', value: 'bar', options: {}}
+    const res = new Response({cookies: [foo]})
+    
+    expect(res.get('Set-Cookie')).to.equal('foo=bar; Path=/')
 ```

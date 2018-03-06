@@ -25,14 +25,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:qiwi/di-container.git"
+    "url": "git@github.com:antongolub/reqresnext.git"
   },
   "keywords": [
-    "di",
-    "ioc",
-    "container",
-    "dependency injection",
-    "inversion of control"
+    "mock",
+    "express mock",
+    "http mock",
+    "mock testing"
   ],
   "author": "Anton Golub <a.golub@qiwi.com> (http://antongolub.com)",
   "license": "MIT",
