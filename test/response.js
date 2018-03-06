@@ -53,5 +53,17 @@ describe('response', () => {
 
       expect(res.get('Set-Cookie')).to.equal('foo=bar; Path=/')
     })
+
+    it('on', () => {
+      let foo
+      const res = new Response()
+      res.on('finish', () => {
+        foo = 'bar'
+      })
+
+      res.send('')
+
+      expect(foo).to.equal('bar')
+    })
   })
 })

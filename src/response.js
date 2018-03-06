@@ -48,7 +48,7 @@ export default class Response implements IResponse {
 
     let body: IData
     // $FlowFixMe
-    this.end = (chunk: IData, encoding: ?string) => { body = chunk }
+    this.end = (chunk: IData, encoding: ?string) => { body = chunk; this.emit('finish') }
     Object.defineProperty(this, 'body', ({
       get () {
         return body
