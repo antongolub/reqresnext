@@ -3,7 +3,6 @@
     "@babel/preset-flow",
     ["@babel/preset-env",{
       "shippedProposals": true,
-      "modules": false,
       "targets": {
         "node": "9.4.0"
       }

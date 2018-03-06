@@ -4,7 +4,7 @@
   "description": "Tiny helper for express middleware testing",
   "main": "dist/index.js",
   "@std/esm": {
-    "esm": "all",
+    "mode": "all",
     "cjs": true
   },
   "scripts": {
@@ -45,7 +45,7 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-flow": "^7.0.0-beta.40",
     "@babel/register": "^7.0.0-beta.40",
-    "@std/esm": "^0.23.3",
+    "@std/esm": "^0.25.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "chai": "^4.1.2",
