@@ -64,13 +64,17 @@
     "flow-typed": "^2.3.0",
     "glob": "^7.1.2",
     "install": "^0.10.4",
-    "mocha": "^5.0.1",
-    "npm": "^5.6.0",
+    "mocha": "^5.0.2",
+    "npm": "^5.7.1",
     "nyc": "^11.5.0",
     "setprototypeof": "^1.1.0",
     "standard": "^11.0.0",
     "standard-version": "^4.3.0"
   },
+  "files": [
+    "README.md",
+    "dist/"
+  ],
   "standard": {
     "parser": "babel-eslint",
     "plugins": [

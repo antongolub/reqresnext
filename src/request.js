@@ -18,23 +18,14 @@ import type {
 
 import express from 'express'
 import url from 'url'
-import { ClientRequest } from 'http'
 import setprototypeof from 'setprototypeof'
 import {assign, each} from './util'
+import DEFAULT_APP from './app'
 
 // $FlowFixMe
 const { request, response } = express
 
-const APP_GET_MAP: {[key: string]: Function} = {
-  'trust proxy fn': () => {}
-}
-export const DEFAULT_APP = {
-  get (key: string): ?Function {
-    return APP_GET_MAP[key]
-  }
-}
-
-export default class Req extends ClientRequest implements IRequest {
+export default class Req implements IRequest {
   $key: string
   $value: IAny
   cookie: ICookieSetter
@@ -49,10 +40,8 @@ export default class Req extends ClientRequest implements IRequest {
   _flush: Function
 
   constructor (input: ?IRawOptions): IResponse {
-    super({})
-    setprototypeof(this, request)
-
     const opts = new ReqOptions(input || {})
+    setprototypeof(this, request)
 
     this._flush = () => {}
     this.app = opts.app

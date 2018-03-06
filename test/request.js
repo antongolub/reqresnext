@@ -32,5 +32,26 @@ describe('request', () => {
         expect(req.get('BAZ')).to.equal('qux')
       })
     })
+
+    describe('ip', () => {
+      it('resolves value from headers', () => {
+        const req = new Request({
+          headers: {
+            'x-forwarded-for': '192.168.1.10'
+          },
+          method: 'GET'
+        })
+
+        expect(req.ip).to.equal('192.168.1.10')
+      })
+    })
+
+    describe('method', () => {
+      const req = new Request({
+        method: 'GET'
+      })
+
+      expect(req.method).to.equal('GET')
+    })
   })
 })

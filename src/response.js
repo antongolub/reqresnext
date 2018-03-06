@@ -19,9 +19,9 @@ import type {
 } from './interface'
 
 import express from 'express'
-import { ServerResponse } from 'http'
 import setprototypeof from 'setprototypeof'
 import { assign, each } from './util'
+import DEFAULT_APP from './app'
 
 // $FlowFixMe
 const { response } = express
@@ -30,11 +30,8 @@ export const DEFAULT_STATUS_CODE = 200
 export const DEFAULT_HEADERS = {}
 export const DEFAULT_COOKIES = {}
 export const DEFAULT_REQ = {}
-export const DEFAULT_APP = {
-  get () {}
-}
 
-export default class Response extends ServerResponse implements IResponse {
+export default class Response implements IResponse {
   $key: string
   $value: IAny
   cookie: ICookieSetter
@@ -46,10 +43,8 @@ export default class Response extends ServerResponse implements IResponse {
   body: IDescriptor
 
   constructor (input: ?IRawOptions): IResponse {
-    super({})
-    setprototypeof(this, response)
-
     const opts = new ResOptions(input || {})
+    setprototypeof(this, response)
 
     let body: IData
     // $FlowFixMe
