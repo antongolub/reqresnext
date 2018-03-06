@@ -65,5 +65,12 @@ describe('response', () => {
 
       expect(foo).to.equal('bar')
     })
+
+    it('write', () => {
+      const res = new Response()
+      res.write('foo')
+      res.write(Buffer.from('bar'))
+      expect(res.body).to.equal('foobar')
+    })
   })
 })

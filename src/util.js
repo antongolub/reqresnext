@@ -1,3 +1,3 @@
 // @flow
 
-export {each, assign, isObject, isString} from 'lodash'
+export {each, assign, isObject, isString, isBuffer} from 'lodash'

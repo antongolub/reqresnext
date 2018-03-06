@@ -20,7 +20,7 @@ import type {
 
 import express from 'express'
 import setprototypeof from 'setprototypeof'
-import { assign, each } from './util'
+import { assign, each, isString, isBuffer } from './util'
 import DEFAULT_APP from './app'
 
 // $FlowFixMe
@@ -41,14 +41,38 @@ export default class Response implements IResponse {
   app: IApp
   req: IRequest | Object
   body: IDescriptor
+  emit: Function
+  write: Function
 
   constructor (input: ?IRawOptions): IResponse {
     const opts = new ResOptions(input || {})
     setprototypeof(this, response)
 
     let body: IData
+
+    const write = this.write.bind(this)
+    this.write = function (chunk: IData, encoding: ?string, callback: ?Function): IResponse {
+      if (isBuffer(chunk)) {
+        body = (body || '') + chunk.toString(encoding)
+      } else if (isString(chunk)) {
+        body = (body || '') + chunk
+      }
+
+      write(chunk, encoding, callback)
+
+      return this
+    }
+
     // $FlowFixMe
-    this.end = (chunk: IData, encoding: ?string) => { body = chunk; this.emit('finish') }
+    this.end = (chunk: IData, encoding: ?string): IResponse => {
+      if (chunk) {
+        body = chunk
+      }
+      this.emit('finish')
+
+      return this
+    }
+
     Object.defineProperty(this, 'body', ({
       get () {
         return body
