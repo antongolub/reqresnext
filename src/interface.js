@@ -35,12 +35,6 @@ export type IStatusCode = number
 export type IStatusSetter = {
   (value: IStatusCode): void
 }
-export type IConnection = {
-  encrypted: ?boolean
-}
-export type IQuery = {
-  [key: string]: any
-}
 export type IParamsMap = {
   [key: string]: any
 }
@@ -50,6 +44,12 @@ export interface IRequest {
 export interface IResponse {
   [key: string]: any;
   cookie: ICookieSetter
+}
+export type IConnection = {
+  encrypted: ?boolean
+}
+export type IQuery = {
+  [key: string]: any
 }
 type UrlTypeBasic = {
   protocol?: string;

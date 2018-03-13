@@ -31,7 +31,8 @@
     "mock",
     "express mock",
     "http mock",
-    "mock testing"
+    "mock testing",
+    "req res next"
   ],
   "author": "Anton Golub <a.golub@qiwi.com> (http://antongolub.com)",
   "license": "MIT",

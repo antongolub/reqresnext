@@ -14,14 +14,14 @@ This lib brings constructors, that accurately reproduces logic of express classe
 
 Reqresnext:
 1. Just uses express proto directly.
-2. Exposes the only additional property to verify outdoing data — `res.body`.
+2. Exposes the only additional property to verify outgoing data — `res.body`.
 
 ##### Usage
 ```javascript
     import reqresnext from 'reqresnext'
  
     it('middleware does something', () => {
-      const {req, res, next} = reqresnext({...}, {...})
+      const {req, res, next} = reqresnext(<ReqOptions>, <ResOptions>)
       mware(req, res, next)
  
       expect(res.statusCode).to.equal('...')
@@ -31,10 +31,28 @@ Reqresnext:
 
 Also you may construct req/res instances directly:
 ```javascript
-    import {Response} from 'reqresnext'
+    import {Response, Request} from 'reqresnext'
 
     const foo = {name: 'foo', value: 'bar', options: {}}
     const res = new Response({cookies: [foo]})
     
     expect(res.get('Set-Cookie')).to.equal('foo=bar; Path=/')
+```
+
+All supported options are described in ./src/interface.js.
+```javascript
+// cookies
+    const foo = {name: 'foo', value: 'bar', options: {}}
+    const res = new Response({cookies: [foo]})
+
+// headers
+    const req = new Request({headers: {foo: 'bar', baz: 'qux'}})
+
+// url
+    const req = new Request({url: 'https://example.com'})
+```
+
+Also you may pass any additional props that does not intersect with proto. They are injected as is.
+```javascript
+    const res = new Response({foo: 'bar', baz: 1, ...})
 ```
