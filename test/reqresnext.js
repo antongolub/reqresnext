@@ -1,7 +1,4 @@
-import chai from 'chai'
 import reqresnext from '../src/reqresnext'
-
-const { expect } = chai
 
 describe('reqresnext', () => {
   it('generates proper map', () => {
@@ -10,8 +7,8 @@ describe('reqresnext', () => {
       url: '/http://example.com'
     })
 
-    expect(req).to.be.an('object')
-    expect(res).to.be.an('object')
-    expect(next).to.be.a('function')
+    expect(req).toEqual(expect.any(Object))
+    expect(res).toEqual(expect.any(Object))
+    expect(next).toEqual(expect.any(Function))
   })
 })

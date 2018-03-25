@@ -11,12 +11,13 @@
     "fetch_types": "flow-typed install express@4.x.x lodash@4.x.x setprototypeof@1.x.x",
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
-    "build": "babel src --out-dir dist",
+    "build": "BABEL_ENV=production babel src --out-dir dist",
     "lint": "standard src/**/*.js test/**/*.js",
     "mocha": "nyc mocha --opts .mocha.opts",
-    "test": "npm run flow && npm run flow_coverage && npm run lint && npm run mocha",
+    "jest": "jest -w 2",
+    "test": "npm run flow && npm run flow_coverage && npm run lint && npm run jest",
     "doc": "esdoc",
-    "coveralls": "npm test && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "npm test && cat ./coverage/lcov.info | coveralls",
     "minor": "npm test && npm run build && standard-version --release-as minor && npm run postversion",
     "major": "npm test && npm run build && standard-version --release-as major && npm run postversion",
     "release": "npm test && npm run build && standard-version && npm run postversion",
@@ -38,22 +39,21 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "setprototypeof": "^1.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.40",
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-flow": "^7.0.0-beta.40",
-    "@babel/register": "^7.0.0-beta.40",
-    "@std/esm": "^0.25.2",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "chai": "^4.1.2",
-    "chai-spies": "^1.0.0",
-    "chai-subset": "^1.6.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-minify": "^0.3.0",
+    "babel-register": "^6.26.0",
     "coveralls": "^3.0.0",
-    "dirty-chai": "^2.0.1",
     "esdoc": "^1.0.4",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-flow-plugin": "^1.0.0",
@@ -63,11 +63,7 @@
     "flow-coverage-report": "^0.5.0",
     "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.3.0",
-    "glob": "^7.1.2",
-    "install": "^0.10.4",
-    "mocha": "^5.0.4",
-    "nyc": "^11.6.0",
-    "setprototypeof": "^1.1.0",
+    "jest": "^22.4.3",
     "standard": "^11.0.0",
     "standard-version": "^4.3.0"
   },
@@ -99,5 +95,17 @@
         "onlyFilesWithFlowAnnotation": true
       }
     }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/interface.js"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*.js"
+    ]
   }
 }

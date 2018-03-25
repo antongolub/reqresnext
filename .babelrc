@@ -1,14 +1,29 @@
 {
   "presets": [
-    "@babel/preset-flow",
-    ["@babel/preset-env",{
-      "shippedProposals": true,
-      "targets": {
-        "node": "9.4.0"
-      }
-    }]
+    "flow",
+    "env"
   ],
   "plugins": [
     "transform-class-properties"
-  ]
+  ],
+  "comments": false,
+  "ignore": [
+    "interface.js"
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions"]
+          }
+        }],
+        "minify",
+        "flow"
+      ],
+      "plugins": [
+        "transform-class-properties"
+      ]
+    }
+  }
 }

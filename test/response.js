@@ -1,24 +1,21 @@
-import chai from 'chai'
 import Response from '../src/response'
-
-const {expect} = chai
 
 describe('response', () => {
   describe('construtor', () => {
     it('inherits http.ServerResponse', () => {
       const res = new Response()
 
-      expect(res.pipe).to.be.a('function')
-      expect(res.setHeader).to.be.a('function')
-      expect(res.getHeader).to.be.a('function')
+      expect(res.pipe).toEqual(expect.any(Function))
+      expect(res.setHeader).toEqual(expect.any(Function))
+      expect(res.getHeader).toEqual(expect.any(Function))
     })
 
     it('passes optional props', () => {
       const end = () => {}
       const res = new Response({foo: 'bar', end})
 
-      expect(res.foo).to.equal('bar')
-      expect(res.end).not.to.equal(end)
+      expect(res.foo).toBe('bar')
+      expect(res.end).not.toEqual(end)
     })
   })
 
@@ -26,7 +23,7 @@ describe('response', () => {
     it('send', () => {
       const res = new Response()
       res.send('foo')
-      expect(res.body).to.equal('foo')
+      expect(res.body).toBe('foo')
     })
 
     it('json', () => {
@@ -34,24 +31,24 @@ describe('response', () => {
       const data = {foo: 'bar'}
       res.json(data)
 
-      expect(res.body).to.equal(JSON.stringify(data))
+      expect(res.body).toEqual(JSON.stringify(data))
     })
 
     it('body', () => {
       const res = new Response()
       res.send('foo')
-      expect(res.body).to.equal('foo')
+      expect(res.body).toBe('foo')
 
       expect(() => {
         res.body = 'bar'
-      }).to.throw('Use .send(), .write() or .json()')
+      }).toThrow('Use .send(), .write() or .json()')
     })
 
     it('cookies', () => {
       const foo = {name: 'foo', value: 'bar', options: {}}
       const res = new Response({cookies: [foo]})
 
-      expect(res.get('Set-Cookie')).to.equal('foo=bar; Path=/')
+      expect(res.get('Set-Cookie')).toBe('foo=bar; Path=/')
     })
 
     it('on', () => {
@@ -63,14 +60,14 @@ describe('response', () => {
 
       res.send('')
 
-      expect(foo).to.equal('bar')
+      expect(foo).toBe('bar')
     })
 
     it('write', () => {
       const res = new Response()
       res.write('foo')
       res.write(Buffer.from('bar'))
-      expect(res.body).to.equal('foobar')
+      expect(res.body).toBe('foobar')
     })
   })
 })
