@@ -24,8 +24,8 @@ Reqresnext:
       const {req, res, next} = reqresnext(<ReqOptions>, <ResOptions>)
       mware(req, res, next)
  
-      expect(res.statusCode).to.equal('...')
-      expect(res.body).to.equal('...')
+      expect(res.statusCode).toEqual('...')
+      expect(res.body).toEqual('...')
     })
 ```
 
@@ -36,10 +36,10 @@ Also you may construct req/res instances directly:
     const foo = {name: 'foo', value: 'bar', options: {}}
     const res = new Response({cookies: [foo]})
     
-    expect(res.get('Set-Cookie')).to.equal('foo=bar; Path=/')
+    expect(res.get('Set-Cookie')).toEqual('foo=bar; Path=/')
 ```
 
-All supported options are described in ./src/interface.js.
+Supported options are described in ./src/interface.js. The main ones:
 ```javascript
 // cookies
     const foo = {name: 'foo', value: 'bar', options: {}}
@@ -52,7 +52,7 @@ All supported options are described in ./src/interface.js.
     const req = new Request({url: 'https://example.com'})
 ```
 
-Also you may pass any additional props that does not intersect with proto. They are injected as is.
+Additional props that does not intersect with proto are injected as is.
 ```javascript
     const res = new Response({foo: 'bar', baz: 1, ...})
 ```
