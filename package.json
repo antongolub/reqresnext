@@ -18,11 +18,7 @@
     "test": "npm run flow && npm run flow_coverage && npm run lint && npm run jest",
     "doc": "esdoc",
     "coveralls": "npm test && cat ./coverage/lcov.info | coveralls",
-    "minor": "npm test && npm run build && standard-version --release-as minor && npm run postversion",
-    "major": "npm test && npm run build && standard-version --release-as major && npm run postversion",
-    "release": "npm test && npm run build && standard-version && npm run postversion",
-    "postversion": "npm run push && npm publish",
-    "push": "git push --follow-tags origin master"
+    "release": "npm test && npm run build && semantic-release"
   },
   "repository": {
     "type": "git",

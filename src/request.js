@@ -39,7 +39,7 @@ export default class Req implements IRequest {
   headers: IHeadersMap
   _flush: Function
 
-  constructor (input: ?IRawOptions): IResponse {
+  constructor (input: ?IRawOptions): IRequest {
     const opts = new ReqOptions(input || {})
     setprototypeof(this, request)
 

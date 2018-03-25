@@ -40,10 +40,12 @@ export type IParamsMap = {
 }
 export interface IRequest {
   [key: string]: any;
+  res: Object;
 }
 export interface IResponse {
   [key: string]: any;
-  cookie: ICookieSetter
+  req: IRequest | Object;
+  cookie: ICookieSetter;
 }
 export type IConnection = {
   encrypted: ?boolean

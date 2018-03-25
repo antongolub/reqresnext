@@ -1,12 +1,17 @@
 language: node_js
 node_js:
   - '9'
-before_install:
-  - npm install -g nyc
-  - npm install -g mocha
+
 install:
   - npm install
   - npm run fetch_types
   - npm run build
+
 script:
   - npm run coveralls
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
