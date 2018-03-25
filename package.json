@@ -8,7 +8,7 @@
     "cjs": true
   },
   "scripts": {
-    "fetch_types": "flow-typed install express@4.x.x lodash@4.x.x",
+    "fetch_types": "flow-typed install express@4.x.x lodash@4.x.x setprototypeof@1.x.x",
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
     "build": "babel src --out-dir dist",
@@ -66,7 +66,6 @@
     "glob": "^7.1.2",
     "install": "^0.10.4",
     "mocha": "^5.0.4",
-    "npm": "^5.7.1",
     "nyc": "^11.6.0",
     "setprototypeof": "^1.1.0",
     "standard": "^11.0.0",
