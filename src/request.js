@@ -18,8 +18,11 @@ import type {
 
 import express from 'express'
 import url from 'url'
-import setprototypeof from 'setprototypeof'
-import {assign, each} from './util'
+import {
+  assign,
+  setprototypeof,
+  appendAdditionalProps
+} from './util'
 import DEFAULT_APP from './app'
 
 // $FlowFixMe
@@ -52,11 +55,7 @@ export default class Req implements IRequest {
     this.connection = opts.connection
 
     // Passes additional props
-    each(opts.raw, (v: IAny, k: string) => {
-      if (!(k in this)) {
-        this[k] = v
-      }
-    })
+    appendAdditionalProps(this, opts.raw)
 
     return this
   }

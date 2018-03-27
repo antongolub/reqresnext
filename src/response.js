@@ -19,8 +19,14 @@ import type {
 } from './interface'
 
 import express from 'express'
-import setprototypeof from 'setprototypeof'
-import { assign, each, isString, isBuffer } from './util'
+import {
+  assign,
+  each,
+  isString,
+  isBuffer,
+  setprototypeof,
+  appendAdditionalProps
+} from './util'
 import DEFAULT_APP from './app'
 
 // $FlowFixMe
@@ -91,11 +97,7 @@ export default class Response implements IResponse {
     })
 
     // Passes additional props
-    each(opts.raw, (v: IAny, k: string) => {
-      if (!(k in this)) {
-        this[k] = v
-      }
-    })
+    appendAdditionalProps(this, opts.raw)
 
     return this
   }
