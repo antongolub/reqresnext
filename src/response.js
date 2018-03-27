@@ -51,10 +51,9 @@ export default class Response implements IResponse {
   write: Function
 
   constructor (input: ?IRawOptions): IResponse {
+    let body: IData
     const opts = new ResOptions(input || {})
     setprototypeof(this, response)
-
-    let body: IData
 
     const write = this.write.bind(this)
     this.write = function (chunk: IData, encoding: ?string, callback: ?Function): IResponse {
@@ -92,9 +91,7 @@ export default class Response implements IResponse {
     this.status(opts.statusCode)
     this.header(opts.headers)
 
-    each(opts.cookies, ({name, value, options}: ICookie): void => {
-      this.cookie(name, value, options)
-    })
+    each(opts.cookies, ({name, value, options}: ICookie): void => this.cookie(name, value, options))
 
     // Passes additional props
     appendAdditionalProps(this, opts.raw)
@@ -113,7 +110,6 @@ export class ResOptions implements IResponseOpts {
 
   constructor (input: IRawOptions) {
     this.raw = input
-
     this.statusCode = ((input.statusCode || input.status || DEFAULT_STATUS_CODE) | 0)
     this.headers = assign({}, DEFAULT_HEADERS, input.headers || {})
     this.cookies = assign({}, DEFAULT_COOKIES, input.cookies || {})
