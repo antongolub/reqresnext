@@ -4,6 +4,7 @@ export type IAny = any
 export interface IApp {
   get(input: any): any
 }
+export type ISocket = Object
 export type INext = {
   (...args: any): any
 }
@@ -86,6 +87,7 @@ export type IRawOptions = IUrlOpt & {
   params? :?IParamsMap;
   headers? :?IHeadersMap;
   cookies?: ?ICookiesMap;
+  socket?: ?ISocket;
 }
 
 export interface IRequestOpts {

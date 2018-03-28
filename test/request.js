@@ -44,11 +44,25 @@ describe('request', () => {
     })
 
     describe('method', () => {
-      const req = new Request({
-        method: 'GET'
+      it('is passed down', () => {
+        const req = new Request({
+          method: 'GET'
+        })
+        expect(req.method).toBe('GET')
       })
+    })
 
-      expect(req.method).toBe('GET')
+    describe('events', () => {
+      it('on', () => {
+        let foo
+        const req = new Request()
+        req.on('data', () => {
+          foo = 'bar'
+        })
+        req.emit('data')
+
+        expect(foo).toBe('bar')
+      })
     })
   })
 })

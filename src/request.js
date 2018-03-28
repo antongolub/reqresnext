@@ -13,7 +13,8 @@ import type {
   IHeadersMap,
   IHeaderSetter,
   IUrl,
-  ICookieSetter
+  ICookieSetter,
+  ISocket
 } from './interface'
 
 import express from 'express'
@@ -41,12 +42,16 @@ export default class Req implements IRequest {
   params: ?IParamsMap
   headers: IHeadersMap
   _flush: Function
+  _readableState: IAny
+  socket: ISocket
 
   constructor (input: ?IRawOptions): IRequest {
     const opts = new ReqOptions(input || {})
     setprototypeof(this, request)
 
     this._flush = () => {}
+    this._readableState = {}
+    this.socket = opts.socket
     this.app = opts.app
     this.res = opts.res
     this.headers = opts.headers
@@ -70,6 +75,7 @@ export class ReqOptions {
   body: ?IData
   query: ?IQuery
   params: ?IParamsMap
+  socket: ISocket
 
   constructor (input: IRawOptions) {
     this.res = input.res || {}
@@ -98,6 +104,7 @@ export class ReqOptions {
     this.params = input.params || {}
     this.connection = connection
     this.raw = input
+    this.socket = input.socket || {}
 
     return this
   }
