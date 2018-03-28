@@ -1,6 +1,6 @@
 {
   "name": "reqresnext",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "description": "Tiny helper for express middleware testing",
   "main": "dist/index.js",
   "@std/esm": {
@@ -13,12 +13,12 @@
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
     "build": "BABEL_ENV=production babel src --out-dir dist",
     "lint": "standard src/**/*.js test/**/*.js",
-    "mocha": "nyc mocha --opts .mocha.opts",
     "jest": "jest -w 2",
     "test": "npm run flow && npm run flow_coverage && npm run lint && npm run jest",
     "doc": "esdoc",
     "coveralls": "npm test && cat ./coverage/lcov.info | coveralls",
-    "release": "npm test && npm run build && semantic-release"
+    "release": "npm test && npm run build && npm run semantic-release",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,8 @@
     "setprototypeof": "^1.1.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^2.0.1",
+    "@semantic-release/git": "^4.0.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -69,6 +71,23 @@
     "CHANGELOG.md",
     "dist/"
   ],
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
   "standard": {
     "parser": "babel-eslint",
     "plugins": [

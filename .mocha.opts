@@ -1,1 +1,0 @@
---require @std/esm test/**/*.js --require flow-remove-types/register --exit
