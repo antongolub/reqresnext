@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/antongolub/reqresnext/compare/v1.2.0...v1.3.0) (2018-03-28)
+
+
+### Features
+
+* handle socket field ([6e17f7a](https://github.com/antongolub/reqresnext/commit/6e17f7a))
+
 # Change Log
 
 
