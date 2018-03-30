@@ -1,4 +1,6 @@
 # reqresnext
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/reqresnext.svg)](https://greenkeeper.io/)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![buildStatus](https://img.shields.io/travis/antongolub/reqresnext.svg?maxAge=60000&branch=master)](https://travis-ci.org/antongolub/reqresnext)
 [![Coveralls](https://img.shields.io/coveralls/antongolub/reqresnext.svg?maxAge=60000)](https://coveralls.io/github/antongolub/reqresnext)
