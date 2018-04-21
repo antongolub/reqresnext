@@ -1,12 +1,13 @@
 # reqresnext
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/reqresnext.svg)](https://greenkeeper.io/)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![buildStatus](https://img.shields.io/travis/antongolub/reqresnext.svg?maxAge=60000&branch=master)](https://travis-ci.org/antongolub/reqresnext)
 [![Coveralls](https://img.shields.io/coveralls/antongolub/reqresnext.svg?maxAge=60000)](https://coveralls.io/github/antongolub/reqresnext)
 [![dependencyStatus](https://img.shields.io/david/antongolub/reqresnext.svg?maxAge=60000)](https://david-dm.org/antongolub/reqresnext)
 [![devDependencyStatus](https://img.shields.io/david/dev/antongolub/reqresnext.svg?maxAge=60000)](https://david-dm.org/antongolub/reqresnext)
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/antongolub/reqresnext)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+[![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/reqresnext.svg)](https://greenkeeper.io/)
+
 
 Tiny helper for express middleware testing.
 
@@ -16,10 +17,10 @@ The best of them (imho) is [node-mocks-http](https://github.com/howardabrams/nod
 This lib brings constructors, that accurately reproduces logic of express classes. That's pretty cool, but sometimes you need a bit more.
 
 Reqresnext:
-1. Just uses express proto directly.
+1. Just uses `express` proto directly.
 2. Exposes the only additional property to verify outgoing data — `res.body`.
 
-##### Usage
+##### Usage examples
 ```javascript
     import reqresnext from 'reqresnext'
  
@@ -31,8 +32,8 @@ Reqresnext:
       expect(res.body).toEqual('...')
     })
 ```
-
-Also you may construct req/res instances directly:
+##### Exposed constructors
+Also you may construct `req/res` instances directly:
 ```javascript
     import {Response, Request} from 'reqresnext'
 
@@ -41,8 +42,7 @@ Also you may construct req/res instances directly:
     
     expect(res.get('Set-Cookie')).toEqual('foo=bar; Path=/')
 ```
-
-Supported options are described in ./src/interface.js. The main ones:
+Supported options are described in [interface](./src/interface.js). The main ones:
 ```javascript
 // cookies
     const foo = {name: 'foo', value: 'bar', options: {}}
@@ -55,7 +55,17 @@ Supported options are described in ./src/interface.js. The main ones:
     const req = new Request({url: 'https://example.com'})
 ```
 
-Additional props that does not intersect with proto are injected as is.
+Any additional props that does not intersect with proto are injected as is.
 ```javascript
     const res = new Response({foo: 'bar', baz: 1, ...})
+    res.foo // 'bar'
+```
+
+#### `next()` handler 
+`Next` handler may be wrapped with `spy` anytime: before or after `reqresnext`. If function is specified, the factory just passes it back.
+```javascript
+  const handler = chai.spy(() => {})
+  const {next} = reqresnext({}, {}, handler)
+  
+  next === handler // true  
 ```

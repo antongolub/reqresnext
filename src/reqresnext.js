@@ -8,7 +8,7 @@ import {isUndefined} from 'lodash'
 import Response from './response'
 import Request from './request'
 
-export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions) {
+export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions, next: ?Function) {
   const req = new Request(reqOpts)
   const res = new Response(resOpts)
 
@@ -20,6 +20,6 @@ export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions) {
   return {
     req,
     res,
-    next () {}
+    next: next || (() => {})
   }
 }
