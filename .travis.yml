@@ -8,7 +8,7 @@ install:
   - npm run build
 
 script:
-  - npm run coveralls
+  - npm run test_with_report
 
 deploy:
   provider: script
