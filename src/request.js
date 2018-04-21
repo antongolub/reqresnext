@@ -29,7 +29,7 @@ import DEFAULT_APP from './app'
 // $FlowFixMe
 const { request, response } = express
 
-export default class Req implements IRequest {
+export default class Request implements IRequest {
   $key: string
   $value: IAny
   cookie: ICookieSetter
@@ -95,8 +95,7 @@ export class ReqOptions {
       set (k: string, v: string): void { headers[k] = v }
     }
     response.header.call(context, input.headers)
-    const host: string = headers.host || urlData.host
-    headers.host = host
+    headers.host = headers.host || urlData.host
 
     this.headers = headers
     this.query = urlData.query

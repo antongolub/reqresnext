@@ -14,3 +14,7 @@ export function appendAdditionalProps (target: Object, props: Object): void {
     }
   })
 }
+
+export function concat (...strings: Array<?string>): string {
+  return strings.join('')
+}

@@ -24,6 +24,7 @@ import {
   each,
   isString,
   isBuffer,
+  concat,
   setprototypeof,
   appendAdditionalProps
 } from './util'
@@ -49,6 +50,7 @@ export default class Response implements IResponse {
   body: IDescriptor
   emit: Function
   write: Function
+  end: Function
 
   constructor (input: ?IRawOptions): IResponse {
     let body: IData
@@ -58,9 +60,9 @@ export default class Response implements IResponse {
     const write = this.write.bind(this)
     this.write = function (chunk: IData, encoding: ?string, callback: ?Function): IResponse {
       if (isBuffer(chunk)) {
-        body = (body || '') + chunk.toString(encoding)
+        body = concat(body, chunk.toString(encoding))
       } else if (isString(chunk)) {
-        body = (body || '') + chunk
+        body = concat(body, chunk)
       }
 
       write(chunk, encoding, callback)
@@ -68,7 +70,6 @@ export default class Response implements IResponse {
       return this
     }
 
-    // $FlowFixMe
     this.end = (chunk: IData, encoding: ?string): IResponse => {
       if (chunk) {
         body = chunk
@@ -79,12 +80,8 @@ export default class Response implements IResponse {
     }
 
     Object.defineProperty(this, 'body', ({
-      get () {
-        return body
-      },
-      set (value: IData) {
-        throw new Error('Use .send(), .write() or .json()')
-      }
+      get () { return body },
+      set (value: IData) { throw new Error('Use .send(), .write() or .json()') }
     }: Object))
     this.req = opts.req
     this.app = opts.app
