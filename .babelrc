@@ -1,9 +1,10 @@
 {
   "presets": [
-    "flow",
-    "env"
+    "@babel/preset-flow",
+    "@babel/preset-env"
   ],
   "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
     "transform-class-properties"
   ],
   "comments": false,
@@ -13,15 +14,16 @@
   "env": {
     "production": {
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "targets": {
             "browsers": ["last 2 versions"]
           }
         }],
-        "minify",
-        "flow"
+        "@babel/preset-flow",
+        "minify"
       ],
       "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
         "transform-class-properties"
       ]
     }
