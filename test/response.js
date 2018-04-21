@@ -1,7 +1,15 @@
 import Response from '../src/response'
+import {ServerResponse} from 'http'
 
 describe('response', () => {
   describe('construtor', () => {
+    it('returns proper instance', () => {
+      const res = new Response()
+
+      expect(res).not.toBeInstanceOf(Response)
+      expect(res).toBeInstanceOf(ServerResponse)
+    })
+
     it('inherits http.ServerResponse', () => {
       const res = new Response()
 
@@ -67,6 +75,7 @@ describe('response', () => {
       const res = new Response()
       res.write('foo')
       res.write(Buffer.from('bar'))
+      res.write()
       expect(res.body).toBe('foobar')
     })
   })

@@ -1,6 +1,17 @@
 import Request from '../src/request'
+import {IncomingMessage} from 'http'
 
 describe('request', () => {
+  describe('constructor', () => {
+    it('returns proper instance', () => {
+      const req = new Request()
+
+      // NOTE Yes, it's correct. You can rely on the fact that req.constructor refers to IncomingMessage.
+      expect(req).not.toBeInstanceOf(Request)
+      expect(req).toBeInstanceOf(IncomingMessage)
+    })
+  })
+
   describe('proto', () => {
     describe('url', () => {
       it('exposes path parts as getters', () => {
@@ -62,6 +73,14 @@ describe('request', () => {
         req.emit('data')
 
         expect(foo).toBe('bar')
+      })
+    })
+
+    describe('_flush', () => {
+      it('does nothing', () => {
+        const req = new Request()
+
+        expect(req._flush()).toBeUndefined()
       })
     })
   })
