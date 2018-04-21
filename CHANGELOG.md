@@ -1,3 +1,11 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/antongolub/reqresnext/compare/v1.3.0...v1.4.0) (2018-04-21)
+
+
+### Features
+
+* add support for optional `next` handler ([7ed0fbc](https://github.com/antongolub/reqresnext/commit/7ed0fbc))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/antongolub/reqresnext/compare/v1.2.0...v1.3.0) (2018-03-28)
 
