@@ -44,6 +44,7 @@ export default class Response implements IResponse {
   cookie: ICookieSetter
   header: IHeaderSetter
   headers: IHeadersMap
+  _headers: IAny
   status: IStatusSetter
   app: IApp
   req: IRequest | Object
@@ -83,6 +84,8 @@ export default class Response implements IResponse {
       get () { return body },
       set (value: IData) { throw new Error('Use .send(), .write() or .json()') }
     }: Object))
+
+    this._headers = null
     this.req = opts.req
     this.app = opts.app
     this.status(opts.statusCode)
