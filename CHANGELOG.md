@@ -1,3 +1,11 @@
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/antongolub/reqresnext/compare/v1.4.0...v1.4.1) (2018-05-17)
+
+
+### Bug Fixes
+
+* **response:** initialize inner _headers map for node v10.1.0 compatibility ([cf19b6d](https://github.com/antongolub/reqresnext/commit/cf19b6d)), closes [#7](https://github.com/antongolub/reqresnext/issues/7)
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/antongolub/reqresnext/compare/v1.3.0...v1.4.0) (2018-04-21)
 
