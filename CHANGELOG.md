@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/antongolub/reqresnext/compare/v1.5.0...v1.5.1) (2018-07-04)
+
+
+### Performance Improvements
+
+* tune up req, res constructors ([a765034](https://github.com/antongolub/reqresnext/commit/a765034))
+
 # [1.5.0](https://github.com/antongolub/reqresnext/compare/v1.4.1...v1.5.0) (2018-07-04)
 
 
