@@ -54,37 +54,32 @@ export default class Response implements IResponse {
   end: Function
 
   constructor (input: ?IRawOptions): IResponse {
-    let body: IData
-    const opts = new ResOptions(input || {})
     setprototypeof(this, response)
+    const opts = new ResOptions(input || {})
 
-    const write = this.write.bind(this)
-    this.write = function (chunk: IData, encoding: ?string, callback: ?Function): IResponse {
-      if (isBuffer(chunk)) {
-        body = concat(body, chunk.toString(encoding))
-      } else if (isString(chunk)) {
-        body = concat(body, chunk)
-      }
-
-      write(chunk, encoding, callback)
-
-      return this
-    }
-
-    this.end = (chunk: IData, encoding: ?string): IResponse => {
-      if (chunk) {
-        body = chunk
-      }
-      this.emit('finish')
-
-      return this
-    }
-
+    let body: IData
     Object.defineProperty(this, 'body', ({
       get () { return body },
       set (value: IData) { throw new Error('Use .send(), .write() or .json()') }
     }: Object))
 
+    const write = this.write.bind(this)
+    this.write = (chunk: IData, encoding?: ?string, callback?: ?Function): IResponse => {
+      if (isBuffer(chunk)) {
+        body = concat(body, chunk.toString(encoding))
+      } else if (isString(chunk)) {
+        body = concat(body, chunk)
+      }
+      write(chunk, encoding, callback)
+      return this
+    }
+    this.end = (chunk: IData, encoding?: ?string): IResponse => {
+      if (chunk) {
+        body = chunk
+      }
+      this.emit('finish')
+      return this
+    }
     this._headers = null
     this.req = opts.req
     this.app = opts.app

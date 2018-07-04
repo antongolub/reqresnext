@@ -46,8 +46,8 @@ export default class Request implements IRequest {
   socket: ISocket
 
   constructor (input: ?IRawOptions): IRequest {
-    const opts = new ReqOptions(input || {})
     setprototypeof(this, request)
+    const opts = new ReqOptions(input || {})
 
     this._flush = () => {}
     this._readableState = {}
