@@ -1,6 +1,6 @@
 {
   "name": "reqresnext",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Tiny helper for express middleware testing",
   "main": "dist/index.js",
   "@std/esm": {

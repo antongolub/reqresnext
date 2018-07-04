@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/antongolub/reqresnext/compare/v1.4.1...v1.5.0) (2018-07-04)
+
+
+### Features
+
+* add `flow` libdefs ([2229980](https://github.com/antongolub/reqresnext/commit/2229980))
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/antongolub/reqresnext/compare/v1.4.0...v1.4.1) (2018-05-17)
 
