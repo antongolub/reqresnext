@@ -2653,21 +2653,21 @@
       }
     },
     "@semantic-release/changelog": {
-      "version": "2.1.1",
-      "resolved": "https://registry.npmjs.org/@semantic-release/changelog/-/changelog-2.1.1.tgz",
-      "integrity": "sha512-ZLx7gndQBJGClnoX5it9hMmMuJ6XhSH4qqtT5C0kYIKT7Ngi280xk3n8N9SSMyVul8KxNiIAzZmlP5h3nCEShQ==",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/@semantic-release/changelog/-/changelog-3.0.0.tgz",
+      "integrity": "sha512-d577qELFMc98WSbXIErQJHRHJSx1j1PqaxEb62d/g9DnRNgaT/JZ7l1c13LtEvWQzwekuGeVb3sk/y8w4nqBHw==",
       "dev": true,
       "requires": {
         "@semantic-release/error": "^2.1.0",
         "aggregate-error": "^1.0.0",
-        "fs-extra": "^6.0.0",
+        "fs-extra": "^7.0.0",
         "lodash": "^4.17.4"
       },
       "dependencies": {
         "fs-extra": {
-          "version": "6.0.1",
-          "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-6.0.1.tgz",
-          "integrity": "sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==",
+          "version": "7.0.0",
+          "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-7.0.0.tgz",
+          "integrity": "sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==",
           "dev": true,
           "requires": {
             "graceful-fs": "^4.1.2",
