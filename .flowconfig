@@ -8,3 +8,6 @@
 ./flow-typed/
 
 [options]
+
+[lints]
+deprecated-utility=off

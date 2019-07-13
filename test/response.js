@@ -1,5 +1,5 @@
 import Response from '../src/response'
-import {ServerResponse} from 'http'
+import { ServerResponse } from 'http'
 
 describe('response', () => {
   describe('construtor', () => {
@@ -20,7 +20,7 @@ describe('response', () => {
 
     it('passes optional props', () => {
       const end = () => {}
-      const res = new Response({foo: 'bar', end})
+      const res = new Response({ foo: 'bar', end })
 
       expect(res.foo).toBe('bar')
       expect(res.end).not.toEqual(end)
@@ -36,7 +36,7 @@ describe('response', () => {
 
     it('json', () => {
       const res = new Response()
-      const data = {foo: 'bar'}
+      const data = { foo: 'bar' }
       res.json(data)
 
       expect(res.body).toEqual(JSON.stringify(data))
@@ -53,8 +53,8 @@ describe('response', () => {
     })
 
     it('cookies', () => {
-      const foo = {name: 'foo', value: 'bar', options: {}}
-      const res = new Response({cookies: [foo]})
+      const foo = { name: 'foo', value: 'bar', options: {} }
+      const res = new Response({ cookies: [foo] })
 
       expect(res.get('Set-Cookie')).toBe('foo=bar; Path=/')
     })

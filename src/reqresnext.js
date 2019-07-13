@@ -4,7 +4,7 @@ import type {
   IRawOptions
 } from './interface'
 
-import {isUndefined} from 'lodash'
+import { isUndefined } from 'lodash'
 import Response from './response'
 import Request from './request'
 

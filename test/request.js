@@ -1,5 +1,5 @@
 import Request from '../src/request'
-import {IncomingMessage} from 'http'
+import { IncomingMessage } from 'http'
 
 describe('request', () => {
   describe('constructor', () => {
@@ -15,14 +15,14 @@ describe('request', () => {
   describe('proto', () => {
     describe('url', () => {
       it('exposes path parts as getters', () => {
-        const req = new Request({url: 'https://example.com'})
+        const req = new Request({ url: 'https://example.com' })
 
         expect(req.hostname).toBe('example.com')
         expect(req.protocol).toBe('https')
       })
 
       it('opts form has priority', () => {
-        const req = new Request({host: 'foobar.com', protocol: 'http', url: 'https://example.com'})
+        const req = new Request({ host: 'foobar.com', protocol: 'http', url: 'https://example.com' })
 
         expect(req.path).toBe('/')
         expect(req.hostname).toBe('foobar.com')
@@ -33,7 +33,7 @@ describe('request', () => {
 
     describe('headers', () => {
       it('exposes proper getters', () => {
-        const req = new Request({headers: {foo: 'bar', baz: 'qux'}})
+        const req = new Request({ headers: { foo: 'bar', baz: 'qux' } })
 
         expect(req.headers.foo).toBe('bar')
         expect(req.header('foo')).toBe('bar')

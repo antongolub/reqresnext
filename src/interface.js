@@ -66,8 +66,18 @@ type UrlTypeBasic = {
   slashes?: boolean;
   auth?: any
 }
-export type IUrl = UrlTypeBasic & {
+export type IUrl = {
+  hash: string;
+  host: string;
+  hostname: string;
   href: string;
+  origin: string;
+  password: string;
+  pathname: string;
+  port: string;
+  protocol: string;
+  search: string;
+  query?: IQuery;
 }
 
 export type IUrlOpt = UrlTypeBasic & {

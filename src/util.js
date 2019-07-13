@@ -1,11 +1,11 @@
 // @flow
 
-import {each} from 'lodash'
+import { each } from 'lodash'
 import setprototypeof from 'setprototypeof'
-import type {IAny} from './interface'
+import type { IAny } from './interface'
 
-export {setprototypeof}
-export {each, assign, isObject, isString, isBuffer} from 'lodash'
+export { setprototypeof }
+export { each, assign, isObject, isString, isBuffer } from 'lodash'
 
 export function appendAdditionalProps (target: Object, props: Object): void {
   each(props, (v: IAny, k: string) => {

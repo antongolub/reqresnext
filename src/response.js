@@ -40,17 +40,29 @@ export const DEFAULT_REQ = {}
 
 export default class Response implements IResponse {
   $key: string
+
   $value: IAny
+
   cookie: ICookieSetter
+
   header: IHeaderSetter
+
   headers: IHeadersMap
+
   _headers: IAny
+
   status: IStatusSetter
+
   app: IApp
+
   req: IRequest | Object
+
   body: IDescriptor
+
   emit: Function
+
   write: Function
+
   end: Function
 
   constructor (input: ?IRawOptions): IResponse {
@@ -86,7 +98,7 @@ export default class Response implements IResponse {
     this.status(opts.statusCode)
     this.header(opts.headers)
 
-    each(opts.cookies, ({name, value, options}: ICookie): void => this.cookie(name, value, options))
+    each(opts.cookies, ({ name, value, options }: ICookie): void => this.cookie(name, value, options))
 
     // Passes additional props
     appendAdditionalProps(this, opts.raw)
@@ -97,10 +109,15 @@ export default class Response implements IResponse {
 
 export class ResOptions implements IResponseOpts {
   raw: IRawOptions
+
   statusCode: IStatusCode
+
   headers: IHeadersMap
+
   cookies: ICookiesMap
+
   app: IApp | Object
+
   req: IRequest | Object
 
   constructor (input: IRawOptions) {

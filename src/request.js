@@ -31,18 +31,31 @@ const { request, response } = express
 
 export default class Request implements IRequest {
   $key: string
+
   $value: IAny
+
   cookie: ICookieSetter
+
   header: IHeaderSetter
+
   app: IApp | Object
+
   res: IResponse | Object
+
   connection: IConnection
+
   body: ?IData
+
   query: ?IQuery
+
   params: ?IParamsMap
+
   headers: IHeadersMap
+
   _flush: Function
+
   _readableState: IAny
+
   socket: ISocket
 
   constructor (input: ?IRawOptions): IRequest {
@@ -68,13 +81,21 @@ export default class Request implements IRequest {
 
 export class ReqOptions {
   raw: IRawOptions
+
   headers: IHeadersMap
+
   app: IApp | Object
+
   res: IResponse | Object
+
   connection: IConnection
+
   body: ?IData
+
   query: ?IQuery
+
   params: ?IParamsMap
+
   socket: ISocket
 
   constructor (input: IRawOptions) {
@@ -82,11 +103,11 @@ export class ReqOptions {
     this.app = input.app || DEFAULT_APP
 
     const headers = {}
-    const urlStr: string = input.url || 'localhost'
+    const urlStr: string = input.url || 'http://localhost'
     const urlOpts = input.host
       ? input
       : { host: urlStr }
-    const urlData: IUrl = url.parse(url.format(urlOpts))
+    const urlData: IUrl = new url.URL(url.format(urlOpts))
     const connection = assign(
       { encrypted: urlData.protocol === 'https:' },
       input.connection || {}
