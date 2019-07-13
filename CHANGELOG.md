@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/antongolub/reqresnext/compare/v1.5.1...v1.5.2) (2019-07-13)
+
+
+### Performance Improvements
+
+* **package:** update cmd contract & repack ([2b34261](https://github.com/antongolub/reqresnext/commit/2b34261))
+
 ## [1.5.1](https://github.com/antongolub/reqresnext/compare/v1.5.0...v1.5.1) (2018-07-04)
 
 
