@@ -1,4 +1,4 @@
-import reqresnext from '../src/reqresnext'
+import reqresnext from '../../main/js/reqresnext'
 
 describe('reqresnext', () => {
   it('generates proper result map', () => {

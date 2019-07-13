@@ -2,7 +2,7 @@
   "name": "reqresnext",
   "version": "1.5.2",
   "description": "Tiny helper for express middleware testing",
-  "main": "dist/index.js",
+  "main": "target/es5/index.js",
   "@std/esm": {
     "mode": "all",
     "cjs": true
@@ -10,9 +10,9 @@
   "scripts": {
     "fetch:types": "flow-typed install express@4.x.x lodash@4.x.x setprototypeof@1.x.x",
     "flow": "flow",
-    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 75",
-    "build": "BABEL_ENV=production babel src --out-dir dist",
-    "lint": "standard src/**/*.js test/**/*.js",
+    "flow:coverage": "flow-coverage-report -i 'src/main/js/**/*.js' -t html -t json -t text --threshold 75",
+    "build": "BABEL_ENV=production babel src/main/js --out-dir target/es5",
+    "lint": "standard src/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "jest": "jest -w 2",
     "test": "npm run flow && npm run flow:coverage && npm run lint && npm run jest",
@@ -73,7 +73,7 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "dist/"
+    "target/es5/"
   ],
   "release": {
     "branch": "master",
@@ -119,13 +119,13 @@
   "jest": {
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
-      "<rootDir>/src/interface.js"
+      "<rootDir>/src/main/js/interface.js"
     ],
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.js"
+      "<rootDir>/src/main/**/*.js"
     ],
     "testMatch": [
-      "<rootDir>/test/**/*.js"
+      "<rootDir>/src/test/**/*.js"
     ]
   }
 }

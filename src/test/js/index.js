@@ -1,4 +1,4 @@
-import reqresnext, { Request, Response } from '../src'
+import reqresnext, { Request, Response } from '../../main/js'
 
 describe('index', () => {
   it('exposes api', () => {

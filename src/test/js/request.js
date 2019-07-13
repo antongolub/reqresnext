@@ -1,4 +1,4 @@
-import Request from '../src/request'
+import Request from '../../main/js/request'
 import { IncomingMessage } from 'http'
 
 describe('request', () => {

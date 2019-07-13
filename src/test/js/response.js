@@ -1,4 +1,4 @@
-import Response from '../src/response'
+import Response from '../../main/js/response'
 import { ServerResponse } from 'http'
 
 describe('response', () => {
