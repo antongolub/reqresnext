@@ -38,16 +38,16 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "lodash": "^4.17.14",
-    "setprototypeof": "^1.1.1"
+    "lodash": "^4.17.15",
+    "setprototypeof": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
     "@babel/plugin-transform-flow-strip-types": "^7.4.4",
-    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@qiwi/semantic-release-gh-pages-plugin": "^1.10.5",
     "@semantic-release/changelog": "^3.0.4",
@@ -63,14 +63,14 @@
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-flow-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint-plugin-flowtype": "^3.11.1",
-    "flow-bin": "^0.102.0",
+    "eslint-plugin-flowtype": "^3.12.2",
+    "flow-bin": "^0.104.0",
     "flow-coverage-report": "^0.6.1",
-    "flow-remove-types": "^2.102.0-rc",
-    "flow-typed": "^2.5.2",
+    "flow-remove-types": "^2.104.0",
+    "flow-typed": "^2.6.1",
     "jest": "^24.8.0",
-    "semantic-release": "^15.13.18",
-    "standard": "^13.0.2"
+    "semantic-release": "^15.13.19",
+    "standard": "^13.1.0"
   },
   "files": [
     "README.md",
@@ -84,7 +84,13 @@
       "@semantic-release/changelog",
       "@semantic-release/git",
       "@semantic-release/npm",
-      ["@qiwi/semantic-release-gh-pages-plugin", {"msg": "updated", "branch": "gh-pages"}]
+      [
+        "@qiwi/semantic-release-gh-pages-plugin",
+        {
+          "msg": "updated",
+          "branch": "gh-pages"
+        }
+      ]
     ]
   },
   "standard": {
