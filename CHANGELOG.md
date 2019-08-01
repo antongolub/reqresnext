@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/antongolub/reqresnext/compare/v1.5.2...v1.5.3) (2019-08-01)
+
+
+### Performance Improvements
+
+* **package:** up deps ([5a2011e](https://github.com/antongolub/reqresnext/commit/5a2011e))
+
 ## [1.5.2](https://github.com/antongolub/reqresnext/compare/v1.5.1...v1.5.2) (2019-07-13)
 
 
