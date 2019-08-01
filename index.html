@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | reqresnext</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Tiny helper for express middleware testing"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="reqresnext"><meta property="twitter:description" content="Tiny helper for express middleware testing"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/antongolub/reqresnext"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="reqresnext">reqresnext</h1><p><a href="https://travis-ci.org/antongolub/reqresnext"><img src="https://img.shields.io/travis/antongolub/reqresnext.svg?maxAge=60000&amp;branch=master" alt="buildStatus"></a>
+<a href="https://coveralls.io/github/antongolub/reqresnext"><img src="https://img.shields.io/coveralls/antongolub/reqresnext.svg?maxAge=60000" alt="Coveralls"></a>
+<a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/antongolub/reqresnext.svg?maxAge=60000" alt="dependencyStatus"></a>
+<a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/dev/antongolub/reqresnext.svg?maxAge=60000" alt="devDependencyStatus"></a>
+<a href="https://codeclimate.com/github/antongolub/reqresnext"><img src="https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg" alt="Code Climate"></a>
+<a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
+<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/antongolub/reqresnext.svg" alt="Greenkeeper badge"></a></p>
+<p>Tiny helper for express middleware testing.</p>
+<h5 id="motivation">Motivation</h5><p>There&apos;re several nice mocking tools for express.
+The best of them (imho) is <a href="https://github.com/howardabrams/node-mocks-http">node-mocks-http</a> by Howard Abrams.
+This lib brings constructors, that accurately reproduces logic of express classes. That&apos;s pretty cool, but sometimes you need a bit more.</p>
+<p>Reqresnext:</p>
+<ol>
+<li>Just uses <code>express</code> proto directly.</li>
+<li>Exposes the only additional property to verify outgoing data &#x2014; <code>res.body</code>.</li>
+</ol>
+<h5 id="usage-examples">Usage examples</h5><pre><code class="lang-javascript"><code class="source-code prettyprint">    import reqresnext from &apos;reqresnext&apos;
+
+    it(&apos;middleware does something&apos;, () =&gt; {
+      const {req, res, next} = reqresnext(&lt;ReqOptions&gt;, &lt;ResOptions&gt;)
+      mware(req, res, next)
+
+      expect(res.statusCode).toEqual(&apos;...&apos;)
+      expect(res.body).toEqual(&apos;...&apos;)
+    })</code>
+</code></pre>
+<h5 id="exposed-constructors">Exposed constructors</h5><p>Also you may construct <code>req/res</code> instances directly:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    import {Response, Request} from &apos;reqresnext&apos;
+
+    const foo = {name: &apos;foo&apos;, value: &apos;bar&apos;, options: {}}
+    const res = new Response({cookies: [foo]})
+
+    expect(res.get(&apos;Set-Cookie&apos;)).toEqual(&apos;foo=bar; Path=/&apos;)</code>
+</code></pre>
+<p>Supported options are described in <a href="./src/interface.js">interface</a>. The main ones:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// cookies
+    const foo = {name: &apos;foo&apos;, value: &apos;bar&apos;, options: {}}
+    const res = new Response({cookies: [foo]})
+
+// headers
+    const req = new Request({headers: {foo: &apos;bar&apos;, baz: &apos;qux&apos;}})
+
+// url
+    const req = new Request({url: &apos;https://example.com&apos;})</code>
+</code></pre>
+<p>Any additional props that does not intersect with proto are injected as is.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    const res = new Response({foo: &apos;bar&apos;, baz: 1, ...})
+    res.foo // &apos;bar&apos;</code>
+</code></pre>
+<h4 id="-code-next----code--handler"><code>next()</code> handler</h4><p><code>Next</code> handler may be wrapped with <code>spy</code> anytime: before or after <code>reqresnext</code>. If function is specified, the factory just passes it back.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const handler = chai.spy(() =&gt; {})
+  const {next} = reqresnext({}, {}, handler)
+
+  next === handler // true  </code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
