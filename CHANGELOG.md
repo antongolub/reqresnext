@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/antongolub/reqresnext/compare/v1.5.3...v1.5.4) (2019-08-16)
+
+
+### Bug Fixes
+
+* **request:** correct url as a string handling ([9b0fc87](https://github.com/antongolub/reqresnext/commit/9b0fc87))
+
 ## [1.5.3](https://github.com/antongolub/reqresnext/compare/v1.5.2...v1.5.3) (2019-08-01)
 
 
