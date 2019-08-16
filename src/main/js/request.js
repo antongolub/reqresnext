@@ -103,10 +103,15 @@ export class ReqOptions {
     this.app = input.app || DEFAULT_APP
 
     const headers = {}
-    const urlStr: string = input.url || 'http://localhost'
+    const urlStr: string = input.url || '/'
     const urlOpts = input.host
       ? input
-      : { host: urlStr }
+      : url.parse(urlStr) // eslint-disable-line
+
+    // NOTE host & protocol are required by URL constructor
+    urlOpts.host = urlOpts.host || 'localhost'
+    urlOpts.protocol = urlOpts.protocol || 'http'
+
     const urlData: IUrl = new url.URL(url.format(urlOpts))
     const connection = assign(
       { encrypted: urlData.protocol === 'https:' },

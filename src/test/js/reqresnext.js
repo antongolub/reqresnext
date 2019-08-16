@@ -4,7 +4,7 @@ describe('reqresnext', () => {
   it('generates proper result map', () => {
     const { req, res, next } = reqresnext({
       method: 'GET',
-      url: 'http://example.com'
+      url: '/example.com'
     })
 
     expect(req).toEqual(expect.any(Object))
