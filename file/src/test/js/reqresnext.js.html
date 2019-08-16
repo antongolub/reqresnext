@@ -40,7 +40,7 @@ describe(&apos;reqresnext&apos;, () =&gt; {
   it(&apos;generates proper result map&apos;, () =&gt; {
     const { req, res, next } = reqresnext({
       method: &apos;GET&apos;,
-      url: &apos;http://example.com&apos;
+      url: &apos;/example.com&apos;
     })
 
     expect(req).toEqual(expect.any(Object))

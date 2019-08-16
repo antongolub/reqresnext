@@ -65,6 +65,14 @@ describe(&apos;request&apos;, () =&gt; {
         expect(req.host).toBe(&apos;foobar.com&apos;)
         expect(req.protocol).toBe(&apos;http&apos;)
       })
+
+      it(&apos;attaches default host and protocol values&apos;, () =&gt; {
+        const req = new Request({ url: &apos;/example.com&apos; })
+
+        expect(req.url).toBe(&apos;/example.com&apos;)
+        expect(req.host).toBe(&apos;localhost&apos;)
+        expect(req.protocol).toBe(&apos;http&apos;)
+      })
     })
 
     describe(&apos;headers&apos;, () =&gt; {
