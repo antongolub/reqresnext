@@ -1,10 +1,11 @@
 # reqresnext
 
-[![buildStatus](https://img.shields.io/travis/antongolub/reqresnext.svg?maxAge=60000&branch=master)](https://travis-ci.org/antongolub/reqresnext)
-[![Coveralls](https://img.shields.io/coveralls/antongolub/reqresnext.svg?maxAge=60000)](https://coveralls.io/github/antongolub/reqresnext)
+[![Build Status](https://travis-ci.com/antongolub/reqresnext.svg?branch=master)](https://travis-ci.com/antongolub/reqresnext)
+[![npm (tag)](https://img.shields.io/npm/v/reqresnext/latest.svg)](https://www.npmjs.com/package/reqresnext)
 [![dependencyStatus](https://img.shields.io/david/antongolub/reqresnext.svg?maxAge=60000)](https://david-dm.org/antongolub/reqresnext)
 [![devDependencyStatus](https://img.shields.io/david/dev/antongolub/reqresnext.svg?maxAge=60000)](https://david-dm.org/antongolub/reqresnext)
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/antongolub/reqresnext)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/maintainability)](https://codeclimate.com/github/antongolub/reqresnext/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/test_coverage)](https://codeclimate.com/github/antongolub/reqresnext/test_coverage)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/reqresnext.svg)](https://greenkeeper.io/)
 
