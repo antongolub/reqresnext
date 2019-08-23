@@ -8,19 +8,24 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/reqresnext.svg)](https://greenkeeper.io/)
 
-
-Tiny helper for express middleware testing.
+Tiny helper for [expressjs](https://expressjs.com/) middlewares testing.
 
 ##### Motivation
-There're several nice mocking tools for express.
+There're several nice mocking tools for express/connect.
 The best of them (imho) is [node-mocks-http](https://github.com/howardabrams/node-mocks-http) by Howard Abrams.
 This lib brings constructors, that accurately reproduces logic of express classes. That's pretty cool, but sometimes you need a bit more.
 
 Reqresnext:
-1. Just uses `express` proto directly.
+1. Just uses `express` proto directly. So you get not _just similar_, but _exactly the same_ behaviour as in production.
 2. Exposes the only additional property to verify outgoing data — `res.body`.
 
-##### Usage examples
+## Install
+```bash
+npm add reqresnext -D
+yarn add reqresnext -D
+```
+
+## Usage
 ```javascript
     import reqresnext from 'reqresnext'
  
@@ -32,7 +37,7 @@ Reqresnext:
       expect(res.body).toEqual('...')
     })
 ```
-##### Exposed constructors
+#### Request & Response
 Also you may construct `req/res` instances directly:
 ```javascript
     import {Response, Request} from 'reqresnext'
@@ -64,8 +69,8 @@ Any additional props that does not intersect with proto are injected as is.
 #### `next()` handler 
 `Next` handler may be wrapped with `spy` anytime: before or after `reqresnext`. If function is specified, the factory just passes it back.
 ```javascript
-  const handler = chai.spy(() => {})
-  const {next} = reqresnext({}, {}, handler)
-  
-  next === handler // true  
+    const handler = chai.spy(() => {})
+    const {next} = reqresnext({}, {}, handler)
+    
+    next === handler // true  
 ```

@@ -75,7 +75,8 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "target/es5/"
+    "target",
+    "flow-typed"
   ],
   "release": {
     "branch": "master",
