@@ -33,23 +33,27 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="reqresnext">reqresnext</h1><p><a href="https://travis-ci.org/antongolub/reqresnext"><img src="https://img.shields.io/travis/antongolub/reqresnext.svg?maxAge=60000&amp;branch=master" alt="buildStatus"></a>
-<a href="https://coveralls.io/github/antongolub/reqresnext"><img src="https://img.shields.io/coveralls/antongolub/reqresnext.svg?maxAge=60000" alt="Coveralls"></a>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="reqresnext">reqresnext</h1><p><a href="https://travis-ci.com/antongolub/reqresnext"><img src="https://travis-ci.com/antongolub/reqresnext.svg?branch=master" alt="Build Status"></a>
+<a href="https://www.npmjs.com/package/reqresnext"><img src="https://img.shields.io/npm/v/reqresnext/latest.svg" alt="npm (tag)"></a>
 <a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/antongolub/reqresnext.svg?maxAge=60000" alt="dependencyStatus"></a>
 <a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/dev/antongolub/reqresnext.svg?maxAge=60000" alt="devDependencyStatus"></a>
-<a href="https://codeclimate.com/github/antongolub/reqresnext"><img src="https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/antongolub/reqresnext/maintainability"><img src="https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/maintainability" alt="Maintainability"></a>
+<a href="https://codeclimate.com/github/antongolub/reqresnext/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/test_coverage" alt="Test Coverage"></a>
 <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
 <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/antongolub/reqresnext.svg" alt="Greenkeeper badge"></a></p>
-<p>Tiny helper for express middleware testing.</p>
-<h5 id="motivation">Motivation</h5><p>There&apos;re several nice mocking tools for express.
+<p>Tiny helper for <a href="https://expressjs.com/">expressjs</a> middlewares testing.</p>
+<h5 id="motivation">Motivation</h5><p>There&apos;re several nice mocking tools for express/connect.
 The best of them (imho) is <a href="https://github.com/howardabrams/node-mocks-http">node-mocks-http</a> by Howard Abrams.
 This lib brings constructors, that accurately reproduces logic of express classes. That&apos;s pretty cool, but sometimes you need a bit more.</p>
 <p>Reqresnext:</p>
 <ol>
-<li>Just uses <code>express</code> proto directly.</li>
+<li>Just uses <code>express</code> proto directly. So you get not <em>just similar</em>, but <em>exactly the same</em> behaviour as in production.</li>
 <li>Exposes the only additional property to verify outgoing data &#x2014; <code>res.body</code>.</li>
 </ol>
-<h5 id="usage-examples">Usage examples</h5><pre><code class="lang-javascript"><code class="source-code prettyprint">    import reqresnext from &apos;reqresnext&apos;
+<h2 id="install">Install</h2><pre><code class="lang-bash"><code class="source-code prettyprint">npm add reqresnext -D
+yarn add reqresnext -D</code>
+</code></pre>
+<h2 id="usage">Usage</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">    import reqresnext from &apos;reqresnext&apos;
 
     it(&apos;middleware does something&apos;, () =&gt; {
       const {req, res, next} = reqresnext(&lt;ReqOptions&gt;, &lt;ResOptions&gt;)
@@ -59,7 +63,7 @@ This lib brings constructors, that accurately reproduces logic of express classe
       expect(res.body).toEqual(&apos;...&apos;)
     })</code>
 </code></pre>
-<h5 id="exposed-constructors">Exposed constructors</h5><p>Also you may construct <code>req/res</code> instances directly:</p>
+<h4 id="request--amp--response">Request &amp; Response</h4><p>Also you may construct <code>req/res</code> instances directly:</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">    import {Response, Request} from &apos;reqresnext&apos;
 
     const foo = {name: &apos;foo&apos;, value: &apos;bar&apos;, options: {}}
@@ -83,10 +87,10 @@ This lib brings constructors, that accurately reproduces logic of express classe
     res.foo // &apos;bar&apos;</code>
 </code></pre>
 <h4 id="-code-next----code--handler"><code>next()</code> handler</h4><p><code>Next</code> handler may be wrapped with <code>spy</code> anytime: before or after <code>reqresnext</code>. If function is specified, the factory just passes it back.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">  const handler = chai.spy(() =&gt; {})
-  const {next} = reqresnext({}, {}, handler)
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    const handler = chai.spy(() =&gt; {})
+    const {next} = reqresnext({}, {}, handler)
 
-  next === handler // true  </code>
+    next === handler // true  </code>
 </code></pre>
 </div>
 </div>
