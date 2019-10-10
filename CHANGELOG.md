@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/antongolub/reqresnext/compare/v1.5.5...v1.6.0) (2019-10-10)
+
+
+### Features
+
+* add TS libdefs ([172a325](https://github.com/antongolub/reqresnext/commit/172a325)), closes [#21](https://github.com/antongolub/reqresnext/issues/21)
+
 ## [1.5.5](https://github.com/antongolub/reqresnext/compare/v1.5.4...v1.5.5) (2019-09-01)
 
 
