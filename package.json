@@ -63,7 +63,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-minify": "^0.5.1",
     "codeclimate-test-reporter": "^0.5.1",
-    "coveralls": "^3.0.6",
+    "coveralls": "^3.0.7",
     "esdoc": "^1.1.0",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-flow-plugin": "^1.0.0",
