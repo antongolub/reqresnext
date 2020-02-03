@@ -9,7 +9,7 @@ declare module 'reqresnext' {
   }
   type IData = any
   interface IDescriptor {
-    [key: any]: any
+    [key: string]: any
   }
   type ICookie = {
     name: string;
@@ -25,7 +25,10 @@ declare module 'reqresnext' {
   type IHeaderName = string
   type IHeaderValue = string
   type IHeadersMap = {
-    [key: IHeaderName]: IHeaderValue
+    [key: string]: IHeaderValue
+  }
+  export type IHeaders = {
+    [key: string]: string | string[]
   }
   type IHeaderSetter = {
     (field: IHeadersMap | IHeaderName, value?: IHeaderValue): void
@@ -45,6 +48,8 @@ declare module 'reqresnext' {
     [key: string]: any;
     req: IRequest | Object;
     cookie: ICookieSetter;
+    writeHead (code: number, headers: IHeaders): IAny,
+    end (data?: string, encoding?: string, cb?: Function): IResponse
   }
   type IConnection = {
     encrypted?: boolean
@@ -92,7 +97,7 @@ declare module 'reqresnext' {
   interface IResponseOpts {
     headers: IHeadersMap;
   }
-  class Request {
+  class Request implements IRequest {
     [key: string]: any
     cookie: ICookieSetter
     header: IHeaderSetter
@@ -106,13 +111,14 @@ declare module 'reqresnext' {
     _flush: Function
     _readableState: IAny
     socket: ISocket
-    constructor (input?: IRawOptions): IRequest
+    constructor (input?: IRawOptions)
   }
-  export class Response {
+  export class Response implements IResponse{
     [key: string]: any
     cookie: ICookieSetter
     header: IHeaderSetter
     headers: IHeadersMap
+    writeHead (code: number, headers: IHeaders): IAny
     _headers: IAny
     status: IStatusSetter
     app: IApp
@@ -120,8 +126,8 @@ declare module 'reqresnext' {
     body: IDescriptor
     emit: Function
     write: Function
-    end: Function
-    constructor (input?: IRawOptions): IResponse
+    end: (data?: string, encoding?: string, cb?: Function) => IResponse
+    constructor (input?: IRawOptions)
   }
   export const reqresnext: {
     (reqOpts?: IRawOptions, resOpts?: IRawOptions, next?: Function): {
@@ -132,6 +138,7 @@ declare module 'reqresnext' {
     Request: typeof Request,
     Response: typeof Response
   }
-  
+
+  //@ts-ignore
   export = reqresnext
 }
