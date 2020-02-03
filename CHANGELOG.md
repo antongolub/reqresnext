@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/antongolub/reqresnext/compare/v1.6.2...v1.6.3) (2020-02-03)
+
+
+### Bug Fixes
+
+* **types:** fix some dts issues ([e1ce523](https://github.com/antongolub/reqresnext/commit/e1ce52327efe692d9483731d541d183a4458ac6a))
+
 ## [1.6.2](https://github.com/antongolub/reqresnext/compare/v1.6.1...v1.6.2) (2019-10-18)
 
 
