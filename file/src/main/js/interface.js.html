@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">src/test/js/index.js | reqresnext</title>
+  <title data-ice="title">src/main/js/interface.js | reqresnext</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -44,16 +44,121 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/test/js/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import reqresnext, { Request, Response } from &apos;../../main/js&apos;
+<div class="content" data-ice="content"><h1 data-ice="title">src/main/js/interface.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// @flow
 
-describe(&apos;index&apos;, () =&gt; {
-  it(&apos;exposes api&apos;, () =&gt; {
-    expect(Request).toEqual(expect.any(Function))
-    expect(Response).toEqual(expect.any(Function))
-    expect(reqresnext).toEqual(expect.any(Function))
-  })
-})
+import { URL } from &apos;url&apos;
+
+export type IAny = any
+export interface IApp {
+  get(input: any): any
+}
+export type ISocket = Object
+export type INext = {
+  (...args: any): any
+}
+export type IData = any
+export interface IDescriptor {
+  [key: any]: any
+}
+
+export type ICookie = {
+  name: string;
+  value: string;
+  options: Object;
+}
+export type ICookiesMap = {
+  [key: string]: ICookie
+}
+export type ICookieSetter = {
+  (name: string, value: string, options: any): void
+}
+export type IHeaderName = string
+export type IHeaderValue = string
+export type IHeadersMap = {
+  [key: IHeaderName]: IHeaderValue
+}
+export type IHeaderSetter = {
+  (field: IHeadersMap | IHeaderName, value?: ?IHeaderValue): void
+}
+export type IStatusCode = number
+export type IStatusSetter = {
+  (value: IStatusCode): void
+}
+export type IParamsMap = {
+  [key: string]: any
+}
+export interface IRequest {
+  [key: string]: any;
+  res: Object;
+}
+export interface IResponse {
+  [key: string]: any;
+  req: IRequest | Object;
+  cookie: ICookieSetter;
+}
+export type IConnection = {
+  encrypted: ?boolean
+}
+export type IQuery = {
+  [key: string]: any
+}
+type UrlTypeBasic = {
+  protocol?: string;
+  host?: string;
+  hostname?: string;
+  query?: IQuery;
+  hash?: string;
+  port?: string;
+  pathname?: string;
+  search?: string;
+  slashes?: boolean;
+  auth?: any
+}
+export type IUrl = URL
+/*
+{
+  hash: string;
+  host: string;
+  hostname: string;
+  href: string;
+  origin: string;
+  password: string;
+  pathname: string;
+  port: string;
+  protocol: string;
+  search: string;
+  query?: IQuery;
+}
+*/
+
+export type IUrlOpt = UrlTypeBasic &amp; {
+  href?: string
+}
+
+export type IRawOptions = IUrlOpt &amp; {
+  app?: ?IApp;
+  res?: ?Object;
+  req?: ?Object;
+  body?: ?IData;
+  url?: string;
+  connection?: ?IConnection;
+  host?: ?string;
+  statusCode? :?number;
+  status? :?number;
+  params? :?IParamsMap;
+  headers? :?IHeadersMap;
+  cookies?: ?ICookiesMap;
+  socket?: ?ISocket;
+}
+
+export interface IRequestOpts {
+  constructor(input: IRawOptions): IRequestOpts;
+  raw: IRawOptions;
+}
+export interface IResponseOpts {
+  headers: IHeadersMap;
+}
 </code></pre>
 
 </div>

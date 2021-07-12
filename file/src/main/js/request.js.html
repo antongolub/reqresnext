@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">src/test/js/index.js | reqresnext</title>
+  <title data-ice="title">src/main/js/request.js | reqresnext</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -44,16 +44,140 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/test/js/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import reqresnext, { Request, Response } from &apos;../../main/js&apos;
+<div class="content" data-ice="content"><h1 data-ice="title">src/main/js/request.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// @flow
 
-describe(&apos;index&apos;, () =&gt; {
-  it(&apos;exposes api&apos;, () =&gt; {
-    expect(Request).toEqual(expect.any(Function))
-    expect(Response).toEqual(expect.any(Function))
-    expect(reqresnext).toEqual(expect.any(Function))
-  })
-})
+import type {
+  IAny,
+  IResponse,
+  IRequest,
+  IRawOptions,
+  IApp,
+  IConnection,
+  IData,
+  IQuery,
+  IParamsMap,
+  IHeadersMap,
+  IHeaderSetter,
+  IUrl,
+  ICookieSetter,
+  ISocket
+} from &apos;./interface&apos;
+
+import express from &apos;express&apos;
+import url from &apos;url&apos;
+import {
+  assign,
+  setprototypeof,
+  appendAdditionalProps
+} from &apos;./util&apos;
+import DEFAULT_APP from &apos;./app&apos;
+
+// $FlowFixMe
+const { request, response } = express
+
+export default class Request implements IRequest {
+  $key: string
+
+  $value: IAny
+
+  cookie: ICookieSetter
+
+  header: IHeaderSetter
+
+  app: IApp | Object
+
+  res: IResponse | Object
+
+  connection: IConnection
+
+  body: ?IData
+
+  query: ?IQuery
+
+  params: ?IParamsMap
+
+  headers: IHeadersMap
+
+  _flush: Function
+
+  _readableState: IAny
+
+  socket: ISocket
+
+  constructor (input: ?IRawOptions) {
+    setprototypeof(this, request)
+    const opts = new ReqOptions(input || {})
+
+    this._flush = () =&gt; {}
+    this._readableState = {}
+    this.socket = opts.socket
+    this.app = opts.app
+    this.res = opts.res
+    this.headers = opts.headers
+    this.body = opts.body
+    this.params = opts.params
+    this.connection = opts.connection
+
+    // Passes additional props
+    appendAdditionalProps(this, opts.raw)
+  }
+}
+
+export class ReqOptions {
+  raw: IRawOptions
+
+  headers: IHeadersMap
+
+  app: IApp | Object
+
+  res: IResponse | Object
+
+  connection: IConnection
+
+  body: ?IData
+
+  query: ?IQuery
+
+  params: ?IParamsMap
+
+  socket: ISocket
+
+  constructor (input: IRawOptions) {
+    this.res = input.res || {}
+    this.app = input.app || DEFAULT_APP
+
+    const headers = {}
+    const urlStr: string = input.url || &apos;/&apos;
+    const urlOpts = input.host
+      ? input
+      : url.parse(urlStr) // eslint-disable-line
+
+    // NOTE host &amp; protocol are required by URL constructor
+    urlOpts.host = urlOpts.host || &apos;localhost&apos;
+    urlOpts.protocol = urlOpts.protocol || &apos;http&apos;
+
+    const urlData: IUrl = new url.URL(url.format(urlOpts))
+    const connection = assign(
+      { encrypted: urlData.protocol === &apos;https:&apos; },
+      input.connection || {}
+    )
+    const context = {
+      set (k: string, v: string): void { headers[k] = v }
+    }
+    response.header.call(context, input.headers)
+    headers.host = headers.host || urlData.host
+
+    this.headers = headers
+    // $FlowFixMe
+    this.query = urlData.query
+    this.body = input.body
+    this.params = input.params || {}
+    this.connection = connection
+    this.raw = input
+    this.socket = input.socket || {}
+  }
+}
 </code></pre>
 
 </div>
