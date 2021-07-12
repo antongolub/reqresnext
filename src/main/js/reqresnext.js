@@ -1,14 +1,14 @@
 // @flow
 
 import type {
-  IRawOptions
+  IRawOptions, IRequest, IResponse
 } from './interface'
 
 import { isUndefined } from 'lodash'
 import Response from './response'
 import Request from './request'
 
-export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions, next: ?Function) {
+export default function gen (reqOpts: ?IRawOptions, resOpts: ?IRawOptions, next: ?Function): {req: IRequest, res: IResponse, next: Function} {
   const req = new Request(reqOpts)
   const res = new Response(resOpts)
 

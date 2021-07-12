@@ -1,5 +1,7 @@
 // @flow
 
+import { URL } from 'url'
+
 export type IAny = any
 export interface IApp {
   get(input: any): any
@@ -66,7 +68,9 @@ type UrlTypeBasic = {
   slashes?: boolean;
   auth?: any
 }
-export type IUrl = {
+export type IUrl = URL
+/*
+{
   hash: string;
   host: string;
   hostname: string;
@@ -79,6 +83,7 @@ export type IUrl = {
   search: string;
   query?: IQuery;
 }
+*/
 
 export type IUrlOpt = UrlTypeBasic & {
   href?: string
