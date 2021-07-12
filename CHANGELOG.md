@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/antongolub/reqresnext/compare/v1.6.3...v1.6.4) (2021-07-12)
+
+
+### Bug Fixes
+
+* update deps, fix vuls ([a33e6d7](https://github.com/antongolub/reqresnext/commit/a33e6d7909dbaf75293d9b25910890913e3584fe))
+
 ## [1.6.3](https://github.com/antongolub/reqresnext/compare/v1.6.2...v1.6.3) (2020-02-03)
 
 
