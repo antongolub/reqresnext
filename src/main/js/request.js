@@ -58,7 +58,7 @@ export default class Request implements IRequest {
 
   socket: ISocket
 
-  constructor (input: ?IRawOptions): IRequest {
+  constructor (input: ?IRawOptions) {
     setprototypeof(this, request)
     const opts = new ReqOptions(input || {})
 
@@ -74,8 +74,6 @@ export default class Request implements IRequest {
 
     // Passes additional props
     appendAdditionalProps(this, opts.raw)
-
-    return this
   }
 }
 
@@ -124,13 +122,12 @@ export class ReqOptions {
     headers.host = headers.host || urlData.host
 
     this.headers = headers
+    // $FlowFixMe
     this.query = urlData.query
     this.body = input.body
     this.params = input.params || {}
     this.connection = connection
     this.raw = input
     this.socket = input.socket || {}
-
-    return this
   }
 }

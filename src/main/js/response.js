@@ -33,10 +33,14 @@ import DEFAULT_APP from './app'
 // $FlowFixMe
 const { response } = express
 
+type Record<T, V> = {
+  [T]: V
+}
+
 export const DEFAULT_STATUS_CODE = 200
-export const DEFAULT_HEADERS = {}
-export const DEFAULT_COOKIES = {}
-export const DEFAULT_REQ = {}
+export const DEFAULT_HEADERS: Record<any, any> = {}
+export const DEFAULT_COOKIES: Record<any, any> = {}
+export const DEFAULT_REQ: Record<any, any> = {}
 
 export default class Response implements IResponse {
   $key: string
@@ -65,7 +69,7 @@ export default class Response implements IResponse {
 
   end: Function
 
-  constructor (input: ?IRawOptions): IResponse {
+  constructor (input: ?IRawOptions) {
     setprototypeof(this, response)
     const opts = new ResOptions(input || {})
 
@@ -82,7 +86,9 @@ export default class Response implements IResponse {
       } else if (isString(chunk)) {
         body = concat(body, chunk)
       }
-      write(chunk, encoding, callback)
+      if (chunk !== undefined) {
+        write(chunk, encoding, callback)
+      }
       return this
     }
     this.end = (chunk: IData, encoding?: ?string): IResponse => {
@@ -102,8 +108,6 @@ export default class Response implements IResponse {
 
     // Passes additional props
     appendAdditionalProps(this, opts.raw)
-
-    return this
   }
 }
 
