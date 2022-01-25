@@ -37,11 +37,24 @@ type Record<T, V> = {
   [T]: V
 }
 
+/**
+ */
 export const DEFAULT_STATUS_CODE = 200
+
+/**
+ */
 export const DEFAULT_HEADERS: Record<any, any> = {}
+
+/**
+ */
 export const DEFAULT_COOKIES: Record<any, any> = {}
+
+/**
+ */
 export const DEFAULT_REQ: Record<any, any> = {}
 
+/**
+ */
 export default class Response implements IResponse {
   $key: string
 
@@ -111,6 +124,8 @@ export default class Response implements IResponse {
   }
 }
 
+/**
+ */
 export class ResOptions implements IResponseOpts {
   raw: IRawOptions
 

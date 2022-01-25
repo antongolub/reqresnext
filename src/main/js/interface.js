@@ -6,7 +6,14 @@ export type IAny = any
 export interface IApp {
   get(input: any): any
 }
+
+/**
+ */
 export type ISocket = Object
+
+/**
+ * Next callback
+ */
 export type INext = {
   (...args: any): any
 }
@@ -15,47 +22,98 @@ export interface IDescriptor {
   [key: any]: any
 }
 
+/**
+ * Cookie declaration
+ */
 export type ICookie = {
   name: string;
   value: string;
   options: Object;
 }
+
+/**
+ * Cookie map
+ */
 export type ICookiesMap = {
   [key: string]: ICookie
 }
+
+/**
+ */
 export type ICookieSetter = {
   (name: string, value: string, options: any): void
 }
+
+/**
+ */
 export type IHeaderName = string
+
+/**
+ */
 export type IHeaderValue = string
+
+/**
+ * Headers map
+ */
 export type IHeadersMap = {
   [key: IHeaderName]: IHeaderValue
 }
+
+/**
+ */
 export type IHeaderSetter = {
   (field: IHeadersMap | IHeaderName, value?: ?IHeaderValue): void
 }
+
+/**
+ */
 export type IStatusCode = number
+
+/**
+ */
 export type IStatusSetter = {
   (value: IStatusCode): void
 }
+
+/**
+ */
 export type IParamsMap = {
   [key: string]: any
 }
+
+/**
+ * Request interface
+ */
 export interface IRequest {
   [key: string]: any;
   res: Object;
 }
+
+/**
+ * Response interface
+ */
 export interface IResponse {
   [key: string]: any;
   req: IRequest | Object;
   cookie: ICookieSetter;
 }
+
+/**
+ */
 export type IConnection = {
   encrypted: ?boolean
 }
+
+/**
+ * Query map
+ */
 export type IQuery = {
   [key: string]: any
 }
+
+/**
+ * URL object
+ */
 type UrlTypeBasic = {
   protocol?: string;
   host?: string;
@@ -89,6 +147,9 @@ export type IUrlOpt = UrlTypeBasic & {
   href?: string
 }
 
+/**
+ * Raw options
+ */
 export type IRawOptions = IUrlOpt & {
   app?: ?IApp;
   res?: ?Object;
@@ -105,10 +166,15 @@ export type IRawOptions = IUrlOpt & {
   socket?: ?ISocket;
 }
 
+/**
+ */
 export interface IRequestOpts {
   constructor(input: IRawOptions): IRequestOpts;
   raw: IRawOptions;
 }
+
+/**
+ */
 export interface IResponseOpts {
   headers: IHeadersMap;
 }
