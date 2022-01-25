@@ -29,6 +29,8 @@ import DEFAULT_APP from './app'
 // $FlowFixMe
 const { request, response } = express
 
+/**
+ */
 export default class Request implements IRequest {
   $key: string
 
@@ -77,6 +79,8 @@ export default class Request implements IRequest {
   }
 }
 
+/**
+ */
 export class ReqOptions {
   raw: IRawOptions
 
