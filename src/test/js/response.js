@@ -78,5 +78,13 @@ describe('response', () => {
       res.write()
       expect(res.body).toBe('foobar')
     })
+
+    it('write and end', () => {
+      const res = new Response()
+      res.write('foo')
+      res.write(Buffer.from('bar'))
+      res.end('!')
+      expect(res.body).toBe('foobar!')
+    })
   })
 })
