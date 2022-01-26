@@ -30,6 +30,7 @@ import DEFAULT_APP from './app'
 const { request, response } = express
 
 /**
+ * Request implementation.
  */
 export default class Request implements IRequest {
   $key: string

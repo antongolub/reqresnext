@@ -54,6 +54,7 @@ export const DEFAULT_COOKIES: Record<any, any> = {}
 export const DEFAULT_REQ: Record<any, any> = {}
 
 /**
+ * Response implementation.
  */
 export default class Response implements IResponse {
   $key: string
