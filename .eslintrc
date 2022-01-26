@@ -1,3 +1,16 @@
 {
-  "extends": "standard"
+  "extends": "standard",
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "flowtype"
+  ],
+  "globals": {
+    "it": "readonly",
+    "expect": "readonly",
+    "describe": "readonly",
+    "before": "readonly",
+    "after": "readonly",
+    "afterEach": "readonly",
+    "beforeEach": "readonly"
+  }
 }
