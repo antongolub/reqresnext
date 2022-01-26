@@ -7,10 +7,6 @@
   "typescript": {
     "definition": "typings/index.d.ts"
   },
-  "@std/esm": {
-    "mode": "all",
-    "cjs": true
-  },
   "scripts": {
     "fetch:types": "flow-typed install express@4.x.x lodash@4.x.x setprototypeof@1.x.x",
     "flow": "flow",
@@ -23,7 +19,7 @@
     "test:report": "npm test && npm run codeclimate:push && npm run coveralls:push",
     "codeclimate:push": "codeclimate-test-reporter < ./coverage/lcov.info",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
-    "docs": "esdoc2",
+    "docs": "documentation build src/main/js -f html --github -o docs",
     "release": "npm test && npm run build && npm run semantic-release",
     "semantic-release": "semantic-release",
     "postupdate": "npm i && npm shrinkwrap && npm audit fix && npm run build && npm run test"
@@ -64,12 +60,6 @@
     "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.1.1",
     "documentation": "^13.2.5",
-    "esdoc-flow-plugin": "^1.0.0",
-    "esdoc-flow-type-plugin": "^1.1.0",
-    "esdoc2": "^2.1.5",
-    "esdoc2-coverage-plugin": "^2.0.0",
-    "esdoc2-flow-type-plugin": "^2.0.0",
-    "esdoc2-standard-plugin": "^2.1.2",
     "eslint-plugin-flowtype": "^8.0.3",
     "flow-bin": "^0.170.0",
     "flow-coverage-report": "^0.6.0",
