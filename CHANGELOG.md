@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/antongolub/reqresnext/compare/v1.6.4...v1.6.5) (2022-01-26)
+
+
+### Bug Fixes
+
+* concat body in res.end ([5f78461](https://github.com/antongolub/reqresnext/commit/5f784619e210faea2e81e4d11c6a722574b3c8c3))
+
 ## [1.6.4](https://github.com/antongolub/reqresnext/compare/v1.6.3...v1.6.4) (2021-07-12)
 
 
