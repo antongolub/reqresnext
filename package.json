@@ -12,17 +12,17 @@
     "flow": "flow",
     "flow:coverage": "flow-coverage-report -i 'src/main/js/**/*.js' -t html -t json -t text --threshold 75",
     "build": "BABEL_ENV=production babel src/main/js --out-dir target/es5 && npm run docs",
-    "lint": "standard src/**/*.js",
+    "lint": "eslint 'src/**/*.js'",
     "lint:fix": "npm run lint -- --fix",
     "jest": "jest -w 2",
-    "test": "npm run flow && npm run flow:coverage && npm run lint && npm run jest",
+    "test": "npm run flow && npm run flow:coverage && npm run lint && npm run jest && npm audit --prod",
     "test:report": "npm test && npm run codeclimate:push && npm run coveralls:push",
     "codeclimate:push": "codeclimate-test-reporter < ./coverage/lcov.info",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "documentation build src/main/js -f html --github -o docs",
     "release": "npm test && npm run build && npm run semantic-release",
     "semantic-release": "semantic-release",
-    "postupdate": "npm i && npm shrinkwrap && npm audit fix && npm run build && npm run test"
+    "postupdate": "npm i && npm shrinkwrap && npm run build && npm run test"
   },
   "repository": {
     "type": "git",
@@ -53,6 +53,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-flow": "^7.16.7",
     "babel-preset-minify": "^0.5.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.1.1",
     "documentation": "^13.2.5",
@@ -60,12 +61,10 @@
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-config-standard": "^17.0.0-0",
     "flow-bin": "^0.170.0",
-    "flow-coverage-report": "^0.6.0",
+    "flow-coverage-report": "^0.8.0",
     "flow-remove-types": "^2.170.0",
     "flow-typed": "^3.6.1",
-    "jest": "^27.4.7",
-    "jsdoc": "^3.6.10",
-    "jsdoc-babel": "^0.5.0"
+    "jest": "^27.4.7"
   },
   "files": [
     "README.md",
@@ -90,30 +89,6 @@
         }
       ]
     ]
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ],
-    "globals": [
-      "it",
-      "expect",
-      "describe",
-      "before",
-      "after",
-      "afterEach",
-      "beforeEach"
-    ],
-    "rules": {
-      "use-flow-type": 1
-    },
-    "ignore": [],
-    "settings": {
-      "flowtype": {
-        "onlyFilesWithFlowAnnotation": true
-      }
-    }
   },
   "jest": {
     "collectCoverage": true,
