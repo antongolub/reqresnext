@@ -106,9 +106,7 @@ export default class Response implements IResponse {
       return this
     }
     this.end = (chunk: IData, encoding?: ?string): IResponse => {
-      if (chunk) {
-        write(chunk, encoding)
-      }
+      this.write(chunk, encoding)
       this.emit('finish')
       return this
     }
