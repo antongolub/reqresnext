@@ -1,121 +1,2114 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | reqresnext</title>
-  <link type="text/css" rel="stylesheet" href="css/style.css">
-  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
-  <script src="script/prettify/prettify.js"></script>
-  <script src="script/manual.js"></script>
-<meta name="description" content="Tiny helper for express middleware testing"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="reqresnext"><meta property="twitter:description" content="Tiny helper for express middleware testing"></head>
-<body class="layout-container" data-ice="rootContainer">
+  <meta charset='utf-8'>
+  <title>reqresnext 1.5.2 | Documentation</title>
+  <meta name='description' content='Tiny helper for express middleware testing'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>reqresnext</h3>
+          <div class='mb1'><code>1.5.2</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#isocket'
+                  class="">
+                  ISocket
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#inext'
+                  class="">
+                  INext
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#icookie'
+                  class="">
+                  ICookie
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#icookiesmap'
+                  class="">
+                  ICookiesMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#icookiesetter'
+                  class="">
+                  ICookieSetter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iheadername'
+                  class="">
+                  IHeaderName
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iheadervalue'
+                  class="">
+                  IHeaderValue
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iheadersmap'
+                  class="">
+                  IHeadersMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iheadersetter'
+                  class="">
+                  IHeaderSetter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#istatuscode'
+                  class="">
+                  IStatusCode
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#istatussetter'
+                  class="">
+                  IStatusSetter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iparamsmap'
+                  class="">
+                  IParamsMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#irequest'
+                  class="">
+                  IRequest
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iresponse'
+                  class="">
+                  IResponse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iconnection'
+                  class="">
+                  IConnection
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iquery'
+                  class="">
+                  IQuery
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#urltypebasic'
+                  class="">
+                  UrlTypeBasic
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#irawoptions'
+                  class="">
+                  IRawOptions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#irequestopts'
+                  class="">
+                  IRequestOpts
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iresponseopts'
+                  class="">
+                  IResponseOpts
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#reqresnext'
+                  class="">
+                  reqresnext
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#request'
+                  class="">
+                  Request
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#reqoptions'
+                  class="">
+                  ReqOptions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#default_status_code'
+                  class="">
+                  DEFAULT_STATUS_CODE
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#default_headers'
+                  class="">
+                  DEFAULT_HEADERS
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#default_cookies'
+                  class="">
+                  DEFAULT_COOKIES
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#default_req'
+                  class="">
+                  DEFAULT_REQ
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#response'
+                  class="">
+                  Response
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#resoptions'
+                  class="">
+                  ResOptions
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
-<header>
-  <a href="./">Home</a>
   
-  <a href="identifiers.html">Reference</a>
-  <a href="source.html">Source</a>
-  
-  <div class="search-box">
-  <span>
-    <img src="./image/search.png">
-    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
-  </span>
-    <ul class="search-result"></ul>
-  </div>
-<a style="position:relative; top:3px;" href="https://github.com/antongolub/reqresnext"><img width="20px" src="./image/github.png"></a></header>
-
-<nav class="navigation" data-ice="nav"><div>
-  <ul>
+  <div class='clearfix'>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#main-js">main/js</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/main/js/request.js~ReqOptions.html">ReqOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/main/js/request.js~Request.html">Request</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/main/js/response.js~ResOptions.html">ResOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/main/js/response.js~Response.html">Response</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gen">gen</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-appendAdditionalProps">appendAdditionalProps</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-concat">concat</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_COOKIES">DEFAULT_COOKIES</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEADERS">DEFAULT_HEADERS</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_REQ">DEFAULT_REQ</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_STATUS_CODE">DEFAULT_STATUS_CODE</a></span></span></li>
-</ul>
-</div>
-</nav>
+    <h3 class='fl m0' id='isocket'>
+      ISocket
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L10-L11'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="reqresnext">reqresnext</h1><p><a href="https://travis-ci.com/antongolub/reqresnext"><img src="https://travis-ci.com/antongolub/reqresnext.svg?branch=master" alt="Build Status"></a>
-<a href="https://www.npmjs.com/package/reqresnext"><img src="https://img.shields.io/npm/v/reqresnext/latest.svg" alt="npm (tag)"></a>
-<a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/antongolub/reqresnext.svg?maxAge=60000" alt="dependencyStatus"></a>
-<a href="https://david-dm.org/antongolub/reqresnext"><img src="https://img.shields.io/david/dev/antongolub/reqresnext.svg?maxAge=60000" alt="devDependencyStatus"></a>
-<a href="https://codeclimate.com/github/antongolub/reqresnext/maintainability"><img src="https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/maintainability" alt="Maintainability"></a>
-<a href="https://codeclimate.com/github/antongolub/reqresnext/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b6f37eeb4ba506b87f6c/test_coverage" alt="Test Coverage"></a>
-<a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
-<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/antongolub/reqresnext.svg" alt="Greenkeeper badge"></a></p>
-<p>Tiny helper for <a href="https://expressjs.com/">expressjs</a> middlewares testing.</p>
-<h5 id="motivation">Motivation</h5><p>There&apos;re several nice mocking tools for express/connect.
-The best of them (imho) is <a href="https://github.com/howardabrams/node-mocks-http">node-mocks-http</a> by Howard Abrams.
-This lib brings constructors, that accurately reproduces logic of express classes. That&apos;s pretty cool, but sometimes you need a bit more.</p>
-<p>Reqresnext:</p>
-<ol>
-<li>Just uses <code>express</code> proto directly. So you get not <em>just similar</em>, but <em>exactly the same</em> behaviour as in production.</li>
-<li>Exposes the only additional property to verify outgoing data &#x2014; <code>res.body</code>.</li>
-</ol>
-<h2 id="install">Install</h2><pre><code class="lang-bash"><code class="source-code prettyprint">npm add reqresnext -D
-yarn add reqresnext -D</code>
-</code></pre>
-<h2 id="usage">Usage</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">    import reqresnext from &apos;reqresnext&apos;
+  
+    <div class='pre p1 fill-light mt0'>ISocket</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
 
-    it(&apos;middleware does something&apos;, () =&gt; {
-      const {req, res, next} = reqresnext(&lt;ReqOptions&gt;, &lt;ResOptions&gt;)
-      mware(req, res, next)
+  
+  
+  
+  
+  
+  
 
-      expect(res.statusCode).toEqual(&apos;...&apos;)
-      expect(res.body).toEqual(&apos;...&apos;)
-    })</code>
-</code></pre>
-<h4 id="request--amp--response">Request &amp; Response</h4><p>Also you may construct <code>req/res</code> instances directly:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">    import {Response, Request} from &apos;reqresnext&apos;
+  
 
-    const foo = {name: &apos;foo&apos;, value: &apos;bar&apos;, options: {}}
-    const res = new Response({cookies: [foo]})
+  
 
-    expect(res.get(&apos;Set-Cookie&apos;)).toEqual(&apos;foo=bar; Path=/&apos;)</code>
-</code></pre>
-<p>Supported options are described in <a href="./src/interface.js">interface</a>. The main ones:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">// cookies
-    const foo = {name: &apos;foo&apos;, value: &apos;bar&apos;, options: {}}
-    const res = new Response({cookies: [foo]})
+  
 
-// headers
-    const req = new Request({headers: {foo: &apos;bar&apos;, baz: &apos;qux&apos;}})
+  
 
-// url
-    const req = new Request({url: &apos;https://example.com&apos;})</code>
-</code></pre>
-<p>Any additional props that does not intersect with proto are injected as is.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">    const res = new Response({foo: &apos;bar&apos;, baz: 1, ...})
-    res.foo // &apos;bar&apos;</code>
-</code></pre>
-<h4 id="-code-next----code--handler"><code>next()</code> handler</h4><p><code>Next</code> handler may be wrapped with <code>spy</code> anytime: before or after <code>reqresnext</code>. If function is specified, the factory just passes it back.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">    const handler = chai.spy(() =&gt; {})
-    const {next} = reqresnext({}, {}, handler)
+  
 
-    next === handler // true  </code>
-</code></pre>
-</div>
-</div>
+  
 
-<footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
-</footer>
+  
 
-<script src="script/search_index.js"></script>
-<script src="script/search.js"></script>
-<script src="script/pretty-print.js"></script>
-<script src="script/inherited-summary.js"></script>
-<script src="script/test-summary.js"></script>
-<script src="script/inner-link.js"></script>
-<script src="script/patch-for-local.js"></script>
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='inext'>
+      INext
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L14-L16'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Next callback</p>
+
+    <div class='pre p1 fill-light mt0'>INext</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='icookie'>
+      ICookie
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L25-L27'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Cookie declaration</p>
+
+    <div class='pre p1 fill-light mt0'>ICookie</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>value</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='icookiesmap'>
+      ICookiesMap
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L34-L36'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Cookie map</p>
+
+    <div class='pre p1 fill-light mt0'>ICookiesMap</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='icookiesetter'>
+      ICookieSetter
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L41-L42'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>ICookieSetter</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iheadername'>
+      IHeaderName
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L47-L48'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IHeaderName</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iheadervalue'>
+      IHeaderValue
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L51-L52'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IHeaderValue</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iheadersmap'>
+      IHeadersMap
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L55-L57'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Headers map</p>
+
+    <div class='pre p1 fill-light mt0'>IHeadersMap</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iheadersetter'>
+      IHeaderSetter
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L62-L63'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IHeaderSetter</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='istatuscode'>
+      IStatusCode
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L68-L69'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IStatusCode</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='istatussetter'>
+      IStatusSetter
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L72-L73'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IStatusSetter</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iparamsmap'>
+      IParamsMap
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L78-L79'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IParamsMap</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='irequest'>
+      IRequest
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L87-L90'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Request interface</p>
+
+    <div class='pre p1 fill-light mt0'>IRequest</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iresponse'>
+      IResponse
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L95-L99'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Response interface</p>
+
+    <div class='pre p1 fill-light mt0'>IResponse</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iconnection'>
+      IConnection
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L101-L102'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IConnection</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>encrypted</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>?)</code>
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iquery'>
+      IQuery
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L107-L109'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Query map</p>
+
+    <div class='pre p1 fill-light mt0'>IQuery</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='urltypebasic'>
+      UrlTypeBasic
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L114-L116'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>URL object</p>
+
+    <div class='pre p1 fill-light mt0'>UrlTypeBasic</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>protocol</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>host</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>hostname</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>query</span> <code class='quiet'>(<a href="#iquery">IQuery</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>port</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>pathname</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>search</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>slashes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>?)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>auth</span> <code class='quiet'>(any?)</code>
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='irawoptions'>
+      IRawOptions
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L150-L152'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Raw options</p>
+
+    <div class='pre p1 fill-light mt0'>IRawOptions</div>
+  
+    <p>
+      Type:
+      any
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='irequestopts'>
+      IRequestOpts
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L171-L174'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IRequestOpts</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iresponseopts'>
+      IResponseOpts
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/interface.js#L178-L180'>
+      <span>src/main/js/interface.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>IResponseOpts</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reqresnext'>
+      reqresnext
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/reqresnext.js#L14-L28'>
+      <span>src/main/js/reqresnext.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>reqresnext factory</p>
+
+    <div class='pre p1 fill-light mt0'>reqresnext(reqOpts: <a href="#irawoptions">IRawOptions</a>?, resOpts: <a href="#irawoptions">IRawOptions</a>?, next: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): {req: <a href="#irequest">IRequest</a>, res: <a href="#iresponse">IResponse</a>, next: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>}</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reqOpts</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>resOpts</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>next</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>{req: <a href="#irequest">IRequest</a>, res: <a href="#iresponse">IResponse</a>, next: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>}</code>
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='request'>
+      Request
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/request.js#L35-L81'>
+      <span>src/main/js/request.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Request implementation.</p>
+
+    <div class='pre p1 fill-light mt0'>new Request(input: <a href="#irawoptions">IRawOptions</a>?)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>input</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reqoptions'>
+      ReqOptions
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/request.js#L85-L138'>
+      <span>src/main/js/request.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>new ReqOptions(input: <a href="#irawoptions">IRawOptions</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>input</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='default_status_code'>
+      DEFAULT_STATUS_CODE
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L42-L42'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>DEFAULT_STATUS_CODE</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='default_headers'>
+      DEFAULT_HEADERS
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L46-L46'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>DEFAULT_HEADERS</div>
+  
+    <p>
+      Type:
+      Record&#x3C;any, any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='default_cookies'>
+      DEFAULT_COOKIES
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L50-L50'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>DEFAULT_COOKIES</div>
+  
+    <p>
+      Type:
+      Record&#x3C;any, any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='default_req'>
+      DEFAULT_REQ
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L54-L54'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>DEFAULT_REQ</div>
+  
+    <p>
+      Type:
+      Record&#x3C;any, any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='response'>
+      Response
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L59-L124'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Response implementation.</p>
+
+    <div class='pre p1 fill-light mt0'>new Response(input: <a href="#irawoptions">IRawOptions</a>?)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>input</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>?)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='resoptions'>
+      ResOptions
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/antongolub/reqresnext/blob/336a3ccbb010ae6cd52d08b65bad628530a0be63/src/main/js/response.js#L128-L149'>
+      <span>src/main/js/response.js</span>
+      </a>
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>new ResOptions(input: <a href="#irawoptions">IRawOptions</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>input</span> <code class='quiet'>(<a href="#irawoptions">IRawOptions</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
 </body>
 </html>
