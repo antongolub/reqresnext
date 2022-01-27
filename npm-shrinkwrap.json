@@ -25,7 +25,6 @@
         "@babel/preset-flow": "^7.16.7",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-preset-minify": "^0.5.1",
-        "codeclimate-test-reporter": "^0.5.1",
         "coveralls": "^3.1.1",
         "documentation": "^13.2.5",
         "eslint": "^8.7.0",
@@ -3449,12 +3448,6 @@
         "node": ">=8"
       }
     },
-    "node_modules/async": {
-      "version": "1.5.2",
-      "resolved": "https://registry.npmjs.org/async/-/async-1.5.2.tgz",
-      "integrity": "sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=",
-      "dev": true
-    },
     "node_modules/asynckit": {
       "version": "0.4.0",
       "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
@@ -4911,37 +4904,6 @@
       },
       "engines": {
         "node": ">= 4.0"
-      }
-    },
-    "node_modules/codeclimate-test-reporter": {
-      "version": "0.5.1",
-      "resolved": "https://registry.npmjs.org/codeclimate-test-reporter/-/codeclimate-test-reporter-0.5.1.tgz",
-      "integrity": "sha512-XCzmc8dH+R4orK11BCg5pBbXc35abxq9sept4YvUFRkFl9zb9MIVRrCKENe6U1TKAMTgvGJmrYyHn0y2lerpmg==",
-      "deprecated": "codeclimate-test-reporter has been deprecated in favor of our new unified test-reporter. Please visit https://docs.codeclimate.com/docs/configuring-test-coverage for details on setting up the new test-reporter.",
-      "dev": true,
-      "dependencies": {
-        "async": "~1.5.2",
-        "commander": "2.9.0",
-        "lcov-parse": "0.0.10",
-        "request": "~2.88.0"
-      },
-      "bin": {
-        "codeclimate-test-reporter": "bin/codeclimate.js"
-      },
-      "engines": {
-        "node": ">= 4"
-      }
-    },
-    "node_modules/codeclimate-test-reporter/node_modules/commander": {
-      "version": "2.9.0",
-      "resolved": "https://registry.npmjs.org/commander/-/commander-2.9.0.tgz",
-      "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q=",
-      "dev": true,
-      "dependencies": {
-        "graceful-readlink": ">= 1.0.0"
-      },
-      "engines": {
-        "node": ">= 0.6.x"
       }
     },
     "node_modules/collect-v8-coverage": {
@@ -9187,12 +9149,6 @@
       "integrity": "sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==",
       "dev": true
     },
-    "node_modules/graceful-readlink": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/graceful-readlink/-/graceful-readlink-1.0.1.tgz",
-      "integrity": "sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=",
-      "dev": true
-    },
     "node_modules/handlebars": {
       "version": "4.7.7",
       "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
@@ -12345,12 +12301,6 @@
       "dependencies": {
         "safe-buffer": "~5.1.0"
       }
-    },
-    "node_modules/lcov-parse": {
-      "version": "0.0.10",
-      "resolved": "https://registry.npmjs.org/lcov-parse/-/lcov-parse-0.0.10.tgz",
-      "integrity": "sha1-GwuP+ayceIklBYK3C3ExXZ2m2aM=",
-      "dev": true
     },
     "node_modules/lead": {
       "version": "1.0.0",
@@ -20469,12 +20419,6 @@
       "integrity": "sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==",
       "dev": true
     },
-    "async": {
-      "version": "1.5.2",
-      "resolved": "https://registry.npmjs.org/async/-/async-1.5.2.tgz",
-      "integrity": "sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=",
-      "dev": true
-    },
     "asynckit": {
       "version": "0.4.0",
       "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
@@ -21717,29 +21661,6 @@
         "@types/q": "^1.5.1",
         "chalk": "^2.4.1",
         "q": "^1.1.2"
-      }
-    },
-    "codeclimate-test-reporter": {
-      "version": "0.5.1",
-      "resolved": "https://registry.npmjs.org/codeclimate-test-reporter/-/codeclimate-test-reporter-0.5.1.tgz",
-      "integrity": "sha512-XCzmc8dH+R4orK11BCg5pBbXc35abxq9sept4YvUFRkFl9zb9MIVRrCKENe6U1TKAMTgvGJmrYyHn0y2lerpmg==",
-      "dev": true,
-      "requires": {
-        "async": "~1.5.2",
-        "commander": "2.9.0",
-        "lcov-parse": "0.0.10",
-        "request": "~2.88.0"
-      },
-      "dependencies": {
-        "commander": {
-          "version": "2.9.0",
-          "resolved": "https://registry.npmjs.org/commander/-/commander-2.9.0.tgz",
-          "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q=",
-          "dev": true,
-          "requires": {
-            "graceful-readlink": ">= 1.0.0"
-          }
-        }
       }
     },
     "collect-v8-coverage": {
@@ -25103,12 +25024,6 @@
       "integrity": "sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==",
       "dev": true
     },
-    "graceful-readlink": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/graceful-readlink/-/graceful-readlink-1.0.1.tgz",
-      "integrity": "sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=",
-      "dev": true
-    },
     "handlebars": {
       "version": "4.7.7",
       "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
@@ -27456,12 +27371,6 @@
           }
         }
       }
-    },
-    "lcov-parse": {
-      "version": "0.0.10",
-      "resolved": "https://registry.npmjs.org/lcov-parse/-/lcov-parse-0.0.10.tgz",
-      "integrity": "sha1-GwuP+ayceIklBYK3C3ExXZ2m2aM=",
-      "dev": true
     },
     "lead": {
       "version": "1.0.0",
