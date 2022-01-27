@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/antongolub/reqresnext/compare/v1.6.5...v1.6.6) (2022-01-27)
+
+
+### Bug Fixes
+
+* added unpipe as a noop to request ([#30](https://github.com/antongolub/reqresnext/issues/30)) ([2326dce](https://github.com/antongolub/reqresnext/commit/2326dce1d25f93ce88c96794592405a5f0357e9a))
+
 ## [1.6.5](https://github.com/antongolub/reqresnext/compare/v1.6.4...v1.6.5) (2022-01-26)
 
 
