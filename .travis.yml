@@ -2,21 +2,28 @@ language: node_js
 node_js:
   - '16'
 
-before_install:
-  - npm install -g greenkeeper-lockfile
-before_script: greenkeeper-lockfile-update
-after_script: greenkeeper-lockfile-upload
-
 install:
   - npm install
   - npm run fetch:types
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - npm run build
-  - npm run test:report
+  - npm run test
+
+after_script:
+  - if [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
+      npm run test:report
+    fi
 
 deploy:
   provider: script
+  on:
+    branch: master
   skip_cleanup: true
   script:
     - npm_config_yes=true npx -p @qiwi/semrel-toolkit semrel

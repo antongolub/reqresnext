@@ -16,7 +16,7 @@
     "lint:fix": "npm run lint -- --fix",
     "jest": "jest -w 2",
     "test": "npm run flow && npm run flow:coverage && npm run lint && npm run jest && npm audit --prod",
-    "test:report": "npm test && npm run codeclimate:push && npm run coveralls:push",
+    "test:report": "npm run codeclimate:push && npm run coveralls:push",
     "codeclimate:push": "codeclimate-test-reporter < ./coverage/lcov.info",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "documentation build src/main/js -f html --github -o docs",
@@ -84,7 +84,7 @@
       [
         "@qiwi/semantic-release-gh-pages-plugin",
         {
-          "msg": "updated",
+          "msg": "docs updated",
           "branch": "gh-pages"
         }
       ]
