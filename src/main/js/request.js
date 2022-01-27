@@ -18,6 +18,7 @@ import type {
 } from './interface'
 
 import express from 'express'
+import { noop } from 'lodash'
 import url from 'url'
 import {
   assign,
@@ -59,14 +60,17 @@ export default class Request implements IRequest {
 
   _readableState: IAny
 
+  unpipe: Function
+
   socket: ISocket
 
   constructor (input: ?IRawOptions) {
     setprototypeof(this, request)
     const opts = new ReqOptions(input || {})
 
-    this._flush = () => {}
+    this._flush = noop
     this._readableState = {}
+    this.unpipe = noop
     this.socket = opts.socket
     this.app = opts.app
     this.res = opts.res
