@@ -17,7 +17,7 @@ script:
 
 after_script:
   - if [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
-      npm run test:report
+      npm run test:report;
     fi
 
 deploy:
