@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/antongolub/reqresnext/compare/v1.6.6...v1.7.0) (2022-02-15)
+
+
+### Bug Fixes
+
+* lowercasing incoming request headers ([5b944f0](https://github.com/antongolub/reqresnext/commit/5b944f032008add419b87f32bffb849eddedda27))
+
+
+### Features
+
+* utility to lowercase object properties ([19a50d9](https://github.com/antongolub/reqresnext/commit/19a50d92df66e7dbbff3b2b9a14eff31ff9cf351)), closes [/github.com/howardabrams/node-mocks-http/blob/a0ad193459c102069a9b7de386f16ebf59cab6e0/lib/utils.js#L3-L9](https://github.com//github.com/howardabrams/node-mocks-http/blob/a0ad193459c102069a9b7de386f16ebf59cab6e0/lib/utils.js/issues/L3-L9)
+
 ## [1.6.6](https://github.com/antongolub/reqresnext/compare/v1.6.5...v1.6.6) (2022-01-27)
 
 
