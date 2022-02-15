@@ -18,3 +18,13 @@ export function appendAdditionalProps (target: Object, props: Object): void {
 export function concat (...strings: Array<?string>): string {
   return strings.join('')
 }
+
+export function convertKeysToLowerCase (map: Object): Object {
+  const newMap = {}
+
+  for (const key in map) {
+    newMap[key.toLowerCase()] = map[key]
+  }
+
+  return newMap
+}
