@@ -23,7 +23,8 @@ import url from 'url'
 import {
   assign,
   setprototypeof,
-  appendAdditionalProps
+  appendAdditionalProps,
+  convertKeysToLowerCase
 } from './util'
 import DEFAULT_APP from './app'
 
@@ -74,7 +75,7 @@ export default class Request implements IRequest {
     this.socket = opts.socket
     this.app = opts.app
     this.res = opts.res
-    this.headers = opts.headers
+    this.headers = opts.headers ? convertKeysToLowerCase(opts.headers) : {}
     this.body = opts.body
     this.params = opts.params
     this.connection = opts.connection

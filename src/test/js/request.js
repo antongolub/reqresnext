@@ -47,6 +47,13 @@ describe('request', () => {
         expect(req.header('foo')).toBe('bar')
         expect(req.get('BAZ')).toBe('qux')
       })
+
+      it('lowercases incoming headers', () => {
+        const req = new Request({ headers: { 'BaZ-Header': 'qux' } })
+
+        expect(req.get('Baz-Header')).toBe('qux')
+        expect(req.headers['baz-header']).toBe('qux')
+      })
     })
 
     describe('ip', () => {
