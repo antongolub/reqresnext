@@ -6,6 +6,7 @@ import Response from './response'
 
 export default reqresnext
 export {
+  reqresnext,
   Request,
   Response
 }

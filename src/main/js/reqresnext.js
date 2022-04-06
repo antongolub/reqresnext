@@ -1,12 +1,14 @@
 // @flow
 
 import type {
-  IRawOptions, IRequest, IResponse
+  IRawOptions,
+  IRequest,
+  IResponse
 } from './interface'
 
-import { isUndefined } from 'lodash'
-import Response from './response'
 import Request from './request'
+import Response from './response'
+import { isUndefined } from './util'
 
 /**
  * reqresnext factory
