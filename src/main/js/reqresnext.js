@@ -3,7 +3,7 @@
 import type {
   IRawOptions,
   IRequest,
-  IResponse,
+  IResponse
 } from './interface'
 
 import Request from './request'

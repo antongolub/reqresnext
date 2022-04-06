@@ -21,7 +21,7 @@
     "flow": "flow",
     "flow:fetch": "flow-typed install express@4.x.x lodash@4.x.x setprototypeof@1.x.x",
     "flow:coverage": "flow-coverage-report -i 'src/main/js/**/*.js' -t html -t json -t text --threshold 75",
-    "build": "npm run docs && npm run build:es5 && npm run build:es6",
+    "build": "npm run build:docs && npm run build:es5 && npm run build:es6",
     "build:docs": "documentation build src/main/js -f html --github -o docs",
     "build:es5": "BABEL_ENV=production babel src/main/js --out-dir target/es5",
     "build:es6": "flow-remove-types-recursive src/main/js target/es6",
